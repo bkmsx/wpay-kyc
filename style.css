@@ -10,8 +10,8 @@ html, body {
 }
 
 body {
-	font-family: 'Source Sans Pro', sans-serif;
-	color:#efe3c9;
+	font-family: 'roboto', sans-serif;
+	color:#000000;
 	font-size:16px;
 	line-height:1;
 	font-weight:300;
@@ -20,23 +20,23 @@ body {
 p {line-height:25px; margin:0;}
 
 h1 {
-	font-family: 'Montserrat', sans-serif; 
+	font-family: 'roboto', sans-serif; 
 	font-size:48px;
 	font-weight:700; letter-spacing:2px; 
 	padding:0; margin:0; 
 	text-transform:uppercase;
-	background: #000;
+	background: #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-h2 {font-family: 'Montserrat', sans-serif; font-size:30px; color:#fff; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; font-weight:400; line-height:1.3;}
-h3 {font-family: 'Montserrat', sans-serif; font-size:20px; color:#fff; font-weight:400; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; line-height:1.5;}
-h4 {font-family: 'Source Sans Pro', sans-serif; font-size:20px; color:#fff; font-weight:400; line-height:30px;}
+h2 {font-family: 'roboto', sans-serif; font-size:30px; color:#000; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; font-weight:400; line-height:1.3;}
+h3 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:400; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; line-height:1.5;}
+h4 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:400; line-height:30px;}
 
 .small-font {
 	font-family: 'Source Sans Pro', sans-serif; 
 	font-size:14px; 
-	color:#837c6c; 
+	color:#000; 
 	font-weight:300;
 }
 
@@ -57,7 +57,7 @@ h4 {font-family: 'Source Sans Pro', sans-serif; font-size:20px; color:#fff; font
 .btn {
 	padding:20px 30px;
 	box-sizing:border-box;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'roboto', sans-serif;
 	font-weight:400;
 	font-size:15px;
 	text-transform:uppercase;
@@ -67,22 +67,22 @@ h4 {font-family: 'Source Sans Pro', sans-serif; font-size:20px; color:#fff; font
 }
 
 .light-btn {
-	background:#E74C3C;
+	background:#u292399;
 	color:#fff;
 }
 
 .light-btn:hover {
 	background:#fff;
-	color:#ba933b;
+	color:#E74C3C;
 }
 
 .dark-btn {
-	color:#ba933b;
+	color:#E74C3C;
 	background:#2a251a;
 }
 
 .dark-btn:hover {
-	background:#ba933b;
+	background:#E74C3C;
 	color:#2a251a;
 }
 
@@ -127,7 +127,7 @@ ul#menu {
 	margin-top:30px;
 	float:right;
 	transition:0.8s;
-	font-family: 'Montserrat', sans-serif; 
+	font-family: 'Roboto', sans-serif; 
 	font-size:13px;
 	font-weight:400;
 	text-transform:uppercase;
@@ -158,7 +158,7 @@ ul#menu li a:hover {
 
 .token-btn:hover {
 	color:#fff !important;
-	background: #ba933b;
+	background: #E74C3C;
 }
 
 a:focus {text-decoration:none;}
@@ -230,7 +230,7 @@ About
 	height:300px;
 }
 
-.about-feature i {font-size:55px; color:#ba933b;}
+.about-feature i {font-size:55px; color:#E74C3C;}
 
 .dark-feature {background:#2d2617;}
 .light-feature {background:#43371d;}
@@ -258,11 +258,11 @@ Get Tokens
 	width:90px;
 	height:90px;
 	border-radius:90px;
-	border:1px solid #ba933b;
+	border:1px solid #E74C3C;
 	box-sizing:border-box;
 	padding-top:22px;
 	font-size:40px;
-	color:#ba933b;
+	color:#E74C3C;
 }
 
 ul.countdown {
@@ -284,7 +284,7 @@ ul.countdown li {
 }
 
 .progress-bar {
-	background-color:#ba933b;
+	background-color:#E74C3C;
 }
 
 .progress {
@@ -602,7 +602,7 @@ border:none;
 		transition:0.3s;
 		font-size:15px;
 		text-transform:uppercase;
-		font-family: 'Montserrat', sans-serif; 
+		font-family: 'Roboto', sans-serif; 
 		letter-spacing:1px;
 		font-weight:400;
 }
@@ -779,7 +779,7 @@ border:none;
 		transition:0.3s;
 		font-size:15px;
 		text-transform:uppercase;
-		font-family: 'Montserrat', sans-serif; 
+		font-family: 'Roboto', sans-serif; 
 		letter-spacing:1px;
 		font-weight:400;
 		margin-left:5px;
@@ -962,7 +962,7 @@ User settings page
 {  
 color:#fff;
 text-align:center;
-background:#E74C3C;
+background:#u292399;
 }
 
 #settings button[type="submit"]:hover
