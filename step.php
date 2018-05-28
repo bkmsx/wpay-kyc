@@ -85,6 +85,7 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 	if ($status == "CLEARED") {
 		sendMail($_COOKIE['email'], getSuccessKycTitle(), getSuccessKycMessage($_POST['lname'], $_POST['erc20_address']));
 	}
+
 	// Update Google sheet
 	// require_once('update-sheet.php');
 	// updateSheet([$_COOKIE['email'], $fname." ".$lname, $date_of_birth, $_POST['citizenship'], $_POST['country'], date('d/m/Y h:i:s', time()), $status, $_POST['erc20_address']], $user['row_number']);

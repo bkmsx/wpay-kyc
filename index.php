@@ -37,7 +37,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Consentium - Dashboard</title>
+<title>BeepBeepNation - Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap & Jquery -->
@@ -53,7 +53,7 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <link rel="stylesheet" type="text/css" href="jquery.flipcountdown.css"/>
 <link href="sidemenu.css" rel="stylesheet">
 <link href="magnific-popup.css" rel="stylesheet">
@@ -136,7 +136,7 @@ function purchase() {
 button:disabled,
 button[disabled=disabled]{
   border: 1px solid #999999;
-  background-color: #EEBE5F;
+  background-color: #fff;
   color: #666666;
 }
 </style>
@@ -243,7 +243,7 @@ button[disabled=disabled]{
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-3 v-pad">
-        <div class="footer-logo"><img src="img/logo.png" alt=""></div>
+        <div class="footer-logo"><img src="img/logo.svg" alt=""></div>
       </div>
       <div class="col-md-4 col-sm-6 v-pad">
         <div style="text-align:center;">

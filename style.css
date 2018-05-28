@@ -25,7 +25,7 @@ h1 {
 	font-weight:700; letter-spacing:2px; 
 	padding:0; margin:0; 
 	text-transform:uppercase;
-	background: -webkit-linear-gradient(left, #ffefcd, #e2b756);
+	background: #000;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -47,7 +47,7 @@ h4 {font-family: 'Source Sans Pro', sans-serif; font-size:20px; color:#fff; font
   height:2px;
   margin-top:15px;
   margin-bottom:50px;
-  background: #e9be5b;
+  background: #000;
 }
 
 .h-line-small {
@@ -67,7 +67,7 @@ h4 {font-family: 'Source Sans Pro', sans-serif; font-size:20px; color:#fff; font
 }
 
 .light-btn {
-	background:#ba933b;
+	background:#E74C3C;
 	color:#fff;
 }
 
@@ -101,21 +101,22 @@ Navigation
 	z-index:1000;
 	position: fixed;
 	width: 100%;
-	background: rgba(0, 0, 0, 0);
+	background: #fff;
 	transition:0.8s;
+	border-bottom: 1px solid #f7f7f7;
 }
 
 #header.bgChange {
-	background: rgba(0, 0, 0, 1);
+	/* background: rgba(0, 0, 0, 1); */
 }
 
 #logo {
-	width:150px;
-	height:45px;
+	width:50px;
+	height:50px;
 	margin-top:12px;
 	float:left;
 	transition:0.8s;
-	background-image:url(img/logo.png);
+	background-image:url(img/logo.svg);
 	background-size:100%;
 	background-repeat:no-repeat;
 }
@@ -137,10 +138,11 @@ ul#menu li {
     display: inline-block;
 	transition:0.8s;
 	margin-left:25px;
+	color: #000;
 }
 
 ul#menu li a {
-	color:#837c6c; 
+	color:#000; 
 }
 
 ul#menu li a:hover {
@@ -149,8 +151,8 @@ ul#menu li a:hover {
 }
 
 .token-btn {
-	color:#ba933b !important;
-	border:1px solid #ba933b;
+	color:#000 !important;
+	border:1px solid #000;
 	padding:15px;
 }
 
@@ -655,8 +657,8 @@ Footer
 }
 
 .footer-logo {
-	max-width:230px;
-	width:100%;
+	width:70px;
+	height:70px;
 }
 
 .social-icon {
@@ -925,7 +927,7 @@ User settings page
 ------------------------------------------------------------------- */
 
 .setting-banner {
-    background: url(img/bannerpage.jpg) top no-repeat;
+    background: url(img/bannerpage.png) top no-repeat;
     background-size: cover;
     position: relative;
     height:300px;
@@ -934,9 +936,8 @@ User settings page
 }
 
 #settings {
-	background: url(img/bg-getnotified.jpg) bottom no-repeat;
 	background-size:100%;
-	background-color:#342c19;
+	background-color:#404040;
     position:relative;
 	padding:90px 0;
 	text-align:center;
@@ -954,20 +955,20 @@ User settings page
   background: #2a2314;
   line-height:140%;  
   border:none !important;
-  color:#888;
+  color:#fff;
 }
 
 #settings button[type="submit"]
 {  
 color:#fff;
 text-align:center;
-background:#ba933b;
+background:#E74C3C;
 }
 
 #settings button[type="submit"]:hover
 {  
   background-color:#fff;
-  color:#ba933b;
+  color:#fff;
 }
 
 .purchase-text {
@@ -995,7 +996,7 @@ background:#ba933b;
 
 #settings th {
 	background:#645125; 
-	color:#efe3c9; 
+	color:#fff; 
 	padding:15px;
 	text-align:left;
 }
@@ -1006,7 +1007,7 @@ th h4 {color:#000;}
 	padding:15px;
 	background:#4f4120;
 	border-bottom:1px solid #41361c;
-	color:#837c6c;
+	color:#fff;
 	font-weight:400;
 }
 
