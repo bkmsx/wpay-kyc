@@ -10,7 +10,7 @@ $amount = $_POST['consentium_amount'];
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Consentium - Payment Selection</title>
+<title>BeepBeepNation - Payment Selection</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap & Jquery -->

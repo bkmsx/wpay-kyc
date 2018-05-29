@@ -24,25 +24,20 @@ $user = mysqli_fetch_array($result);
 <html>
 <head>
 	<title>User detail</title>
-	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="modal-style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style_admin.css">
 </head>
 <body>
 <div class="menu" id="menu">
-	<div class="inline">
-		<a class="link" href="user-list.php">User list</a>
-	</div>
-	<div class="inline">
-		<a class="link" href="transaction-list.php">Transaction list</a>
-	</div>
-	<div class="inline">
-		<a class="link" href="#" onclick="editProfile()">Edit profile</a>
-	</div>
-	<div class="inline">
-		<a class="logout" href="#" onclick="logOut()">Logout</a>
-	</div>
+	<div id="logo"> </div>
+	<ul>
+		<li><a class="link" href="user-list.php">Users</a></li>
+		<li><a class="link" href="transaction-list.php">Transactions</a></li>
+		<li><a class="link" href="#" onclick="editProfile()">Edit profile</a></li>
+		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
+	</ul>
 </div>
 
 <h1>User detail</h1>
@@ -85,17 +80,18 @@ $user = mysqli_fetch_array($result);
 			<option <?php if($user['status'] == 'REJECTED') echo "selected"; ?>>REJECTED</option>
 		</select>
 	</div>
-	<div class="inline width-30">
+	<div id="passport" class="inline width-30">
 		Passport:<br/>
-		<a href="javascript: showImage(' <?php echo $user['passport_location']?> ', '<?php echo $user['first_name']?> <?php echo $user['last_name'] ?> ');">View</a>
+		<div><a href="javascript: showImage(' <?php echo $user['passport_location']?> ', '<?php echo $user['first_name']?> <?php echo $user['last_name'] ?> ');">View</a>
+		</div>
 	</div>
 	</form>
 </div>
 <div id="edit_btns" hidden="hidden" class="center">
-	<button onclick="saveProfile()">Save</button>
-	<button onclick="cancelEdit()">Cancel</button>
+	<button class="bg1" onclick="saveProfile()">Save</button>
+	<button class="bg2" onclick="cancelEdit()">Cancel</button>
 </div>
-<div id="transactions" style="margin-top: 30px;">
+<div id="transactions">
     <table>
         <tr valign="center">
           <th>DATE</th>
@@ -166,28 +162,28 @@ function editProfile(){
 	var inputs = document.getElementsByTagName('input');
 	for (var i = 1; i < inputs.length; i++) {
 		inputs[i].readOnly = false;
-		inputs[i].style.backgroundColor = "yellow";
+		inputs[i].style.backgroundColor = "white";
 	}
 
 	document.getElementById("transactions").hidden = true;
 	document.getElementById("edit_btns").hidden = false;
 	document.getElementById("menu").hidden = true;
 	document.getElementById("status").disabled = false;
-	document.getElementById("status").style.backgroundColor = "yellow";
+	document.getElementById("status").style.backgroundColor = "white";
 }
 
 function cancelEdit() {
 	var inputs = document.getElementsByTagName('input');
 	for (let index of inputs) {
 		index.readOnly = true;
-		index.style.backgroundColor = "white";
+		index.style.backgroundColor = "#DEDDDD";
 	}
 
 	document.getElementById("transactions").hidden = false;
 	document.getElementById("edit_btns").hidden = true;
 	document.getElementById("menu").hidden = false;
 	document.getElementById("status").disabled = true;
-	document.getElementById("status").style.backgroundColor = "white";
+	document.getElementById("status").style.backgroundColor = "#DEDDDD";
 }
 
 function saveProfile() {

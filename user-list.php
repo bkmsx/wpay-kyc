@@ -7,23 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin panel</title>
-	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	<title>User list</title>
+	<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="modal-style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style_admin.css">
 </head>
 <body>
 <div class="menu">
-	<div class="inline">
-		<a class="link" href="user-list.php">User list</a>
-	</div>
-	<div class="inline">
-		<a class="link" href="transaction-list.php">Transaction list</a>
-	</div>
-	<div class="inline">
-		<a class="logout" href="#" onclick="logOut()">Logout</a>
-	</div>
+	<div id="logo"> </div>
+	<ul>
+		<li><a class="link" href="user-list.php">Users</a></li>
+		<li><a class="link" href="transaction-list.php">Transactions</a></li>
+		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
+	</ul>
 </div>
 <h1>User list</h1>
 <table>
@@ -47,7 +44,7 @@ while ($user = mysqli_fetch_array($result)) {
 	$id += 1;
 	echo "<tr>";
 	echo "<td>".$id."</td>";
-	echo "<td><a href='javascript: showUserDetail(\"".$user['email']."\")' style='text-decoration: none'>".$user['email']."</a></td>";
+	echo "<td><a href='javascript: showUserDetail(\"".$user['email']."\")' class='highlight-text'>".$user['email']."</a></td>";
 	echo "<td>".$user['first_name']." ".$user['last_name']."</td>";
 	echo "<td>".$user['coin_number']."</td>";
 	echo "<td>".$user['date_birth']."</td>";
@@ -60,7 +57,7 @@ while ($user = mysqli_fetch_array($result)) {
 	}
 	
 	if(!empty($user['passport_location'])) {
-		echo "<td><a href='javascript: showImage(\"".$user['passport_location']."\",\"".$user['first_name']." ".$user['last_name']."\")'>View</a></td>";
+		echo "<td><a class='highlight-text' href='javascript: showImage(\"".$user['passport_location']."\",\"".$user['first_name']." ".$user['last_name']."\")'>View</a></td>";
 	} else {
 		echo "<td/>";
 	}

@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Transaction list</title>
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="style_admin.css">
 <script type="text/javascript">
@@ -40,15 +40,12 @@ function showTransactionDetail(transaction_id){
 </head>
 <body>
 <div class="menu">
-<div class="inline">
-	<a class="link" href="user-list.php">User list</a>
-</div>
-<div class="inline">
-	<a class="link" href="transaction-list.php">Transaction list</a>
-</div>
-<div class="inline">
-	<a class="logout" href="#" onclick="logOut()">Logout</a>
-</div>
+	<div id="logo"> </div>
+	<ul>
+		<li><a class="link" href="user-list.php">Users</a></li>
+		<li><a class="link" href="transaction-list.php">Transactions</a></li>
+		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
+	</ul>
 </div>
 <h1>Transaction list</h1>
 <div style="overflow-x:auto;">
@@ -74,14 +71,14 @@ function showTransactionDetail(transaction_id){
 		echo "<tr>";
 		echo "<td>".$index."</td>";
 	    echo "<td>".$transaction['date']."</td>";
-	    echo "<td><a href='javascript: showUserDetail(\"".$transaction['user_email']."\")' style='text-decoration: none'>".$transaction['user_email']."</a></td>";
+	    echo "<td><a href='javascript: showUserDetail(\"".$transaction['user_email']."\")' class='highlight-text'>".$transaction['user_email']."</a></td>";
 	    echo "<td>".$transaction['currency']."</td>";
 	    echo "<td>".$transaction['amount']."</td>";
 	    echo "<td>".$transaction['address']."</td>";
 	    echo "<td>".$transaction['consentium_amount']."</td>";
 	    echo "<td>".$transaction['consentium_bonus']."</td>";
 	    echo "<td>".$transaction['conversion_rate']."</td>";
-	    echo "<td><a href='#' onclick='showTransactionDetail(\"".$transaction['transaction_id']."\")'>".$transaction['status']."</a></td>";
+	    echo "<td><a href='#' class='highlight-text' onclick='showTransactionDetail(\"".$transaction['transaction_id']."\")'>".$transaction['status']."</a></td>";
 		echo "</tr>";
 		$index += 1;
 	  }

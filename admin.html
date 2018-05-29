@@ -2,64 +2,23 @@
 <html>
 <head>
 <title>Admin login</title>
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
-<style type="text/css">
-body{
-  background-color: #342c19;
-  width: 100%;
-  height: 100%;
-}
-h1{
-	text-align: center;
-	color: #ffefcd;
-	margin-top: 100px;
-	margin-bottom: 50px;
-	font-size: 50px;
-}
-input{
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 5px;
-	width: 250px;
-	height: 35px;
-	font-size: 17px;
-}
-
-input[type=submit]{
-	background-color: #CAA52D;
-	padding: 0px;
-	border: none;
-	color: white;
-	font-weight: bold;
-	width: 150px;
-	height: 50px;
-}
-
-label {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	margin-bottom: 15px;
-}
-
-div {
-	margin-left: auto;
-	margin-right: auto;
-}
-</style>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+<link rel="stylesheet" type="text/css" href="style_admin.css"/>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
-	<h1>Login panel</h1>
-	<label id="error" style="display: none; color: red;">* Username or password are not correct</label>
-	<label id="error_captcha" style="display: none; color: red;">* Please check captcha</label>
-	<form action="admin.php" method="POST">
-		<input type="text" name="user" placeholder="User name"><br/><br/>
-		<input type="password" name="password" placeholder="Password"><br/><br/>
-		<div class="g-recaptcha" data-sitekey="6Lf551oUAAAAAJjI_qlCT6RRFeatWbhkklQlyM33"></div><br/><br/>
-		<input type="submit" name="submit" value="Login">
-	</form>
-
+	<div class="center">
+		<h1>Login panel</h1>
+		<label id="error" style="display: none; color: red;">* Username or password are not correct</label>
+		<label id="error_captcha" style="display: none; color: red;">* Please check captcha</label>
+		<form action="admin.php" method="POST">
+			<div id="admin" class="center">
+				<input type="text" name="user" placeholder="User name"><br/><br/>
+				<input type="password" name="password" placeholder="Password"><br/><br/>
+				<div id="captcha" class="g-recaptcha" data-sitekey="6Lf551oUAAAAAJjI_qlCT6RRFeatWbhkklQlyM33"></div><br/><br/>
+				<input type="submit" name="submit" value="Login">
+			</div>
+		</form>
+	</div>
 </body>
 </html>
