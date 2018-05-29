@@ -11,7 +11,7 @@ html, body {
 
 body {
 	font-family: 'roboto', sans-serif;
-	color:#000000;
+	color:#fff;
 	font-size:16px;
 	line-height:1;
 	font-weight:300;
@@ -25,9 +25,8 @@ h1 {
 	font-weight:700; letter-spacing:2px; 
 	padding:0; margin:0; 
 	text-transform:uppercase;
-	background: #fff;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+	color: #424242;
+  	-webkit-background-clip: text;
 }
 h2 {font-family: 'roboto', sans-serif; font-size:30px; color:#000; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; font-weight:400; line-height:1.3;}
 h3 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:400; letter-spacing:1px; padding:0; margin:0; text-transform:uppercase; line-height:1.5;}
@@ -36,9 +35,10 @@ h4 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:4
 .small-font {
 	font-family: 'Source Sans Pro', sans-serif; 
 	font-size:14px; 
-	color:#000; 
+	color:#E6E6E6; 
 	font-weight:300;
 }
+
 
 .v-pad {padding-top:15px; padding-bottom:15px;}
 
@@ -47,7 +47,7 @@ h4 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:4
   height:2px;
   margin-top:15px;
   margin-bottom:50px;
-  background: #000;
+  background: #424242;
 }
 
 .h-line-small {
@@ -66,15 +66,6 @@ h4 {font-family: 'roboto', sans-serif; font-size:20px; color:#000; font-weight:4
 	transition:0.3s;
 }
 
-.light-btn {
-	background:#u292399;
-	color:#fff;
-}
-
-.light-btn:hover {
-	background:#fff;
-	color:#E74C3C;
-}
 
 .dark-btn {
 	color:#E74C3C;
@@ -103,7 +94,7 @@ Navigation
 	width: 100%;
 	background: #fff;
 	transition:0.8s;
-	border-bottom: 1px solid #f7f7f7;
+	border-bottom: 1px solid #E6E6E6;
 }
 
 #header.bgChange {
@@ -545,10 +536,10 @@ input, textarea, select {
 
 input[type="text"],textarea, select, input[type="email"]
 { 
-background: #8e702b;
+background: #444444;
   line-height:140%;  
   border:none !important;
-  color:#efe39c;
+  color:white;
 }
 
 input[type="text"], input[type="email"]
@@ -586,7 +577,7 @@ select {
     background-repeat: no-repeat;
     background-position: center right 12px;
     cursor: pointer;
-	color:#b09b6b;
+	color:white;
 }
 
 button[type="submit"]
@@ -628,7 +619,7 @@ background:#ba933b;
 input[type="text"]:focus,textarea:focus
 {
   outline: none !important;
-  background:#6b5420 !important;
+  background:#343433 !important;
 }
 
 #notify input[type="text"]:focus, #notify textarea:focus
@@ -637,15 +628,20 @@ input[type="text"]:focus,textarea:focus
   background:#2a2314 !important;
 }
 
-.input-style::-webkit-input-placeholder {color:#b09b6b;}
-.input-style:-moz-placeholder {color:#b09b6b;}
-.input-style::-moz-placeholder {color:#b09b6b;}
-.input-style::-ms-input-placeholder {color:#b09b6b;}
+.input-style::-webkit-input-placeholder {color:#444444;}
+.input-style:-moz-placeholder {color:#444444;}
+.input-style::-moz-placeholder {color:#444444;}
+.input-style::-ms-input-placeholder {color:#444444;}
 
-#notify .input-style::-webkit-input-placeholder {color:#888;}
-#notify .input-style:-moz-placeholder {color:#888;}
-#notify .input-style::-moz-placeholder {color:#888;}
-#notify .input-style::-ms-input-placeholder {color:#888;}
+#signpage input[type="email"], #signpage input[type="password"] {
+	background: #E6E6E6;
+	color: black;
+}
+
+#notify .input-style::-webkit-input-placeholder {color:#444444;}
+#notify .input-style:-moz-placeholder {color:#444444;}
+#notify .input-style::-moz-placeholder {color:#444444;}
+#notify .input-style::-ms-input-placeholder {color:#444444;}
 
 /* ------------------------------------------------------------------
 Footer
@@ -666,15 +662,15 @@ Footer
 	height:50px;
 	border-radius:50px;
 	background:transparent;
-	border:1px solid #ba933b;
-	color:#ba933b;
+	border:1px solid #EA7C70;
+	color:#EA7C70;
 	box-sizing:border-box;
 	padding-top:15px;
 	text-align:center;
 	transition:0.3s;
 }
 
-.social-icon:hover {background:#ba933b; color:#fff;}
+.social-icon:hover {background:#EA7C70; color:#fff;}
 
 .social-icon i {font-size:20px;}
 
@@ -717,9 +713,8 @@ Live Token Sale page
 .tokensale .stats {width:172px;}
 
 .signpage {
-	background: url(img/bg-getnotified.jpg) bottom no-repeat;
 	background-size:100%;
-	background-color:#342c19;
+	background-color:#404040;
     position:relative;
 	padding-top:150px;
 	text-align:center;
@@ -733,19 +728,17 @@ Live Token Sale page
 .signpage input {background:#2a2314;}
 
 .step-bg1 {
-    background: url(img/bg-tech.jpg) top no-repeat;
+    background-color: white;
     background-size: 100%;
-    background-color: #252015;
     position: relative;
     height:320px;
-	padding-top:170px;
+	padding-top:130px;
 	box-sizing:border-box;
 }
 
 .step-bg2 {
-    background: url(img/bg-gold-top.jpg) top left no-repeat, url(img/bg-gold-bottom.jpg) bottom left no-repeat;
     background-size: 100%;
-    background-color: #b28c36;
+    background-color: #404040;
     position: relative;
 	min-height:800px;
 	padding:90px 0;
@@ -768,22 +761,23 @@ input.invalid {
 }
 
 .step-bg2 button {
-  color:#b28c36;
-text-align:center;
-background:#2a251a;
-border-radius:0px;
-border:none;
-        min-width: 165px;
-        padding:20px;
-        cursor: pointer; 
-		transition:0.3s;
-		font-size:15px;
-		text-transform:uppercase;
-		font-family: 'Roboto', sans-serif; 
-		letter-spacing:1px;
-		font-weight:400;
-		margin-left:5px;
-		margin-bottom:10px;
+  	color:white;
+	text-align:center;
+	background:#E74C3C;
+	border-radius:0px;
+	border:none;
+	min-width: 165px;
+	padding:20px;
+	cursor: pointer; 
+	transition:0.3s;
+	font-size:18px;
+	text-transform:uppercase;
+	font-family: 'Roboto', sans-serif; 
+	letter-spacing:1px;
+	font-weight:400;
+	font-weight: bold;
+	margin-left:5px;
+	margin-bottom:10px;
 }
 
 button:hover {
@@ -826,23 +820,23 @@ button:hover {
   display: inline-block;
   opacity: 0.5;
   float:left;
-  border:1px solid #ba933b;
+  border:1px solid #EA7C70;
 }
 
 .step.active {
   opacity: 1;
-  background-color: #ba933b;
+  background-color: #EA7C70;
 }
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #ba933b;
+  background-color: #EA7C70;
 }
 
 .step-line {
 	width:310px;
 	height:1px;
-	background:#ba933b;
+	background:#EA7C70;
 	float:left;
 	margin-top:12px;
 }
@@ -878,7 +872,7 @@ button:hover {
 #regForm td {    
     padding: 0;
     border-bottom: none;
-    color: #efe3c9;
+    color: #E6E6E6;
 }
 	
 input[type=radio] {
@@ -892,7 +886,7 @@ input[type=radio] {
 }
 
 .upload-box {
-	background:#6b5420;
+	background:#222121;
 	height:240px;
 	width:100%;
 	box-sizing:border-box;
@@ -952,17 +946,17 @@ User settings page
 
 #settings input[type="text"], #notify input[type="email"]
 {
-  background: #2a2314;
+  background: #222121;
   line-height:140%;  
   border:none !important;
-  color:#fff;
+  color:rgb(206, 202, 202);
 }
 
 #settings button[type="submit"]
 {  
 color:#fff;
 text-align:center;
-background:#u292399;
+background: #292399;
 }
 
 #settings button[type="submit"]:hover
@@ -982,7 +976,7 @@ background:#u292399;
 }
 
 .btn-copy {
-	background: #47391c;
+	background: #33322f;
 	width:60px;
 	height:60px;
 	float:left;
@@ -995,8 +989,8 @@ background:#u292399;
 }
 
 #settings th {
-	background:#645125; 
-	color:#fff; 
+	background:white; 
+	color:black; 
 	padding:15px;
 	text-align:left;
 }
@@ -1005,9 +999,9 @@ th h4 {color:#000;}
 
 #settings td {
 	padding:15px;
-	background:#4f4120;
+	background:#E6E6E6;
 	border-bottom:1px solid #41361c;
-	color:#fff;
+	color:black;
 	font-weight:400;
 }
 
@@ -1033,4 +1027,82 @@ th h4 {color:#000;}
 	width:690px !important;
 	float:left;
 	text-align:center;
+}
+
+.highlight-text {
+	color: #EA7C70;
+}
+
+.light-btn {
+	background:#E74C3C;
+	color:#fff;
+}
+
+.light-btn:hover {
+	background:#fff;
+	color:#E74C3C;
+}
+
+input[type="submit"] {
+	background:#E74C3C;
+	color:#fff;
+}
+
+button:disabled, button[disabled=disabled]{
+  border: 1px solid #999999;
+  background-color: #fff;
+  color: #666666;
+}
+
+#settings h2 {
+	color: white;
+}
+
+#settings .h-line {
+	background: white;
+}
+
+.white-popup {
+	position: relative;
+	background: #404040;
+	width: auto;
+	max-width: 750px;
+	margin: 25px auto;
+	padding: 50px 25px;
+}
+.white-popup ul li {
+	margin: 5px 0;
+}
+.mfp-bg {
+	background: white;
+}
+.mfp-close-btn-in .mfp-close {
+	color: white;
+}
+.mfp-close {
+	font-size: 36px;
+}
+.mfp-content h2 {
+	color: white;
+}
+.mfp-content p {color:#E6E6E6;}
+
+#step h1 {
+	color: white;
+} 
+
+#step .h-line {
+	background-color: white;
+}
+
+#step label {
+	color: #E6E6E6;
+}
+
+#step input[type="text"], #step select {
+	background-color: #222121;
+}
+
+.light-text {
+	color: #E6E6E6;
 }

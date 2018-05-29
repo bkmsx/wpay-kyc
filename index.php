@@ -65,34 +65,6 @@
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
 <!-- End of consentium Zendesk Widget script -->
 
-
-<style>
-.white-popup {
-	position: relative;
-	background: #252015;
-	width: auto;
-	max-width: 750px;
-	margin: 25px auto;
-	padding: 50px 25px;
-}
-.white-popup ul li {
-	margin: 5px 0;
-}
-.mfp-bg {
-	background: #ba933b;
-}
-.mfp-close-btn-in .mfp-close {
-	color: #ba933b;
-}
-.mfp-close {
-	font-size: 36px;
-}
-.mfp-content h2 {
-	color: #ba933b;
-}
-.mfp-content p {color:#837c6c;}
-</style>
-
 <!-- Add sidemenu -->
 <script>
 (function($){
@@ -131,15 +103,6 @@ function purchase() {
   form.submit();
 }
 </script>
-
-<style type="text/css">
-button:disabled,
-button[disabled=disabled]{
-  border: 1px solid #999999;
-  background-color: #fff;
-  color: #666666;
-}
-</style>
 </head>
 
 <body>
@@ -190,14 +153,14 @@ button[disabled=disabled]{
             <div style="clear:both;"></div>
           </div>
         </form>
-        <label id="error_lbl" style="color: red" <?php if($user['status'] == "CLEARED") echo "hidden"; ?>>*Your account has not been approved yet</label>
+        <label id="error_lbl" style="color: red" <?php if($user['status'] == "CLEARED") echo "hidden";?> >*Your account has not been approved yet</label>
         <div class="col-md-12 col-sm-12 v-pad">
-          <button id="purchase_btn" onclick="purchase()" class="btn light-btn" <?php if($user['status'] != "CLEARED") echo "disabled"; ?>>Purchase</button>
+          <button id="purchase_btn" onclick="purchase()" class="btn light-btn" <?php if($user['status'] != "CLEARED") echo "disabled";?>>Purchase</button>
         </div>
       </div>
       <br>
       <br>
-      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:support@consentium.net" style="color:#ba933b;">support@consentium.net</a></span>
+      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:support@consentium.net" class="highlight-text">support@consentium.net</a></span>
     </div>
     <div style="background:#4d3f1f; height:1px; width:100%; margin:60px 0;"></div>
     <h2 style="font-weight:700;">Transaction History</h2>
@@ -261,7 +224,7 @@ button[disabled=disabled]{
           <span class="small-font">© 2018 ASIA FOCUS GROUP PTE LTD. All Rights Reserved.</span>
           <br><br>
           
-          <span class="small-font"><a href="#privacy" class="open-popup-link" style="color:#ba933b;">Privacy Policy</a></span>
+          <span class="small-font"><a href="#privacy" class="open-popup-link highlight-text">Privacy Policy</a></span>
 
         </div>
       </div>
@@ -277,7 +240,7 @@ button[disabled=disabled]{
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a style="color:#ba933b;" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
+  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a class="highlight-text" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 

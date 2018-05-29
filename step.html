@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <link rel="stylesheet" type="text/css" href="jquery.flipcountdown.css" />
 <link href="sidemenu.css" rel="stylesheet">
 <link href="media-queries.css" rel="stylesheet">
@@ -104,7 +104,7 @@ function checkDate(){
     var date = $('#date').val();
     if (regex.test(date)){
         handleInput();
-        $('#date').css('background-color','#8e702b');
+        $('#date').css('background-color','#222121');
         $('#date').removeAttr('title');
     } else {
         $('#date').prop('title', 'Date format: DD/MM/YYYY');
@@ -118,17 +118,6 @@ function changeFile(){
 }
 
 </script>
-
-<style type="text/css">
-button:disabled,
-button[disabled=disabled]{
-  border: 1px solid #999999;
-  background-color: #4f4634;
-  color: #666666;
-},
-label {
-    color: grey;
-}
 
 </style>
 </head>
@@ -177,25 +166,25 @@ label {
  </div>
 </div>
 
-<section class="step-bg2">
+<section id="step" class="step-bg2">
 <div class="container">
 <form id="regForm" action="step.php" method="post" enctype="multipart/form-data" style="width: 850px">
   <!-- One "tab" for each step in the form: -->
-  <div class="tab">
+  <!-- Terms Condition-->
+  <div  class="tab" hidden>
     <div style="text-align:center;">
       <h1>Terms & Conditions</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
-    <br>
-    
+    <br/>
     <div class="clearfix">
       <table>
         <tr valign="top">
           <td class="radio-btn"><input type="checkbox" id="term1" onclick="handleClickCheckbox()" value="value1" oninput="this.className = ''"></td>
-          <td style="padding-bottom: 30px; font-size: 20px;">I have read the <a href="terms-conditions.html" target="_blank"><b>Token Sale Terms & Conditions</b></a>, Privacy Policy and Consentium White Paper, and accept all terms, conditions, obligations, affirmations, representations and warranties outlined in these documents and agree to adhere to them and be legally bound by them.</td>
+          <td style="padding-bottom: 30px; font-size: 17px; line-height: 22px">I have read the <a href="terms-conditions.html" target="_blank" class="highlight-text"><b>Token Sale Terms & Conditions</b></a>, Privacy Policy and Consentium White Paper, and accept all terms, conditions, obligations, affirmations, representations and warranties outlined in these documents and agree to adhere to them and be legally bound by them.</td>
         </tr>
         <tr valign="top">
           <td class="radio-btn"><input type="checkbox" id="term2" onclick="handleClickCheckbox()" value="value2" oninput="this.className = ''"></td>
-          <td style="padding-bottom: 30px;font-size: 20px;">I confirm that I am not citizen, permanent resident, or granted indefinite leave to remain in the United States or any jurisdiction in which the purchase of Consentium coins (CSM) is explicitly prohibited or outlawed.</td>
+          <td style="padding-bottom: 30px;font-size: 17px; line-height: 22px">I confirm that I am not citizen, permanent resident, or granted indefinite leave to remain in the United States or any jurisdiction in which the purchase of Consentium coins (CSM) is explicitly prohibited or outlawed.</td>
         </tr>
       </table>
     </div>
@@ -209,36 +198,38 @@ label {
     </div>
   </div>
   </div>
-  <div class="tab">
+
+  <!-- Basic information -->
+  <div class="tab" hidden>
     <div style="text-align:center;">
       <h1>Basic Information</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
     <br>
     <div class="row">
     <div class="col-md-6 v-pad">
-      <label style="color: #f5dca5">First Name</label>
+      <label>First Name</label>
       <input id="fname" type="text" class="input-style" placeholder="" name="fname" oninput="handleInput()">
     </div>
     <div class="col-md-6 v-pad">
-        <label style="color: #f5dca5">Last Name</label>
+        <label>Last Name</label>
       <input id="lname" type="text" class="input-style" placeholder="" name="lname" oninput="handleInput()">
     </div>
     <div class="col-md-6 v-pad">
-        <label style="color: #f5dca5">Date Of Birth</label>
+        <label>Date Of Birth</label>
       <input id="date" name="date_of_birth" type='text' id="datepicker" class="input-style calendar"  placeholder="DD/MM/YYYY" value="" oninput="checkDate()"/>
     </div>
     <div class="col-md-6 v-pad">
-        <label style="color: #f5dca5">Citizenship</label>
+        <label>Citizenship</label>
       <select id="citizenship" class="input-style" name="citizenship" oninput="this.className = ''">
             
       </select>
     </div>
     <div class="col-md-6 v-pad">
-        <label style="color: #f5dca5">ERC20 Wallet Address</label>
+        <label>ERC20 Wallet Address</label>
       <input id="erc20_address" name="erc20_address" class="input-style" type='text'  placeholder="" value=""  oninput="handleInput()"/>
     </div>
     <div class="col-md-6 v-pad">
-        <label style="color: #f5dca5">Country Of Residency</label>
+        <label>Country Of Residency</label>
       <select id="country" class="input-style" name="country" oninput="this.className = ''">
             
       </select>
@@ -253,7 +244,9 @@ label {
     </div>
   </div>
   </div>
-  <div class="tab">
+
+  <!-- Upload photo -->
+  <div class="tab" hidden>
     <div style="text-align:center;">
       <h1>Identity Image</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
@@ -280,6 +273,7 @@ label {
     <label>Please do not refresh or navigate away from this page while your details are being submitted...</label>
   </div>
   
+  <!-- Thank you form -->
   <div class="tab">
     <div style="text-align:center;">
       <h1>Thank You</h1><div class="h-line" style="display:inline-block;"></div>
@@ -288,12 +282,12 @@ label {
     <i class="fa fa-check-square-o" style="font-size:100px;" aria-hidden="true"></i>
     <br>
     <br>
-    <p>We are currently processing your application. Please note, we may request that you submit additional identity verification in the future.</p>
+    <p class="light-text">We are currently processing your application. Please note, we may request that you submit additional identity verification in the future.</p>
     <br>
     <br>
     <br>
     <br>
-    <a href="index.php" class="btn dark-btn">Go To Dashboard</a>
+    <a href="index.php" class="btn light-btn">Go To Dashboard</a>
     </div>
   </div>
   
@@ -307,7 +301,7 @@ label {
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-3 v-pad">
-        <div class="footer-logo"><img src="img/logo.png" alt=""></div>
+        <div class="footer-logo"><img src="img/logo.svg" alt=""></div>
       </div>
       <div class="col-md-4 col-sm-6 v-pad">
         <div style="text-align:center;">

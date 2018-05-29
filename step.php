@@ -46,11 +46,11 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 	require_once('send-mail.php');
 	sendMail($_COOKIE['email'], getApplyKycTitle(), getApplyKycMessage($_POST['lname']));
 
+	// check Artemis
 	$sql_max_id = "select * from bbn_user where email='".$_COOKIE['email']."'";
 	$result = mysqli_query($dbc, $sql_max_id);
 	$user = mysqli_fetch_array($result);
 
-	// check Artemis
 	require_once('request_api.php');
 	$url = "https://p3.cynopsis.co/artemis_novumcapital/default/individual_risk";
 	$fname = empty($_POST['fname'])? " " : $_POST['fname'];
@@ -87,8 +87,8 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 	}
 
 	// Update Google sheet
-	// require_once('update-sheet.php');
-	// updateSheet([$_COOKIE['email'], $fname." ".$lname, $date_of_birth, $_POST['citizenship'], $_POST['country'], date('d/m/Y h:i:s', time()), $status, $_POST['erc20_address']], $user['row_number']);
+	require_once('update-sheet.php');
+	updateSheet([$_COOKIE['email'], $fname." ".$lname, $date_of_birth, $_POST['citizenship'], $_POST['country'], date('d/m/Y h:i:s', time()), $status, $_POST['erc20_address']], $user['row_number']);
 	
 
 	// Update database

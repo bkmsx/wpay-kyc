@@ -3,7 +3,7 @@
 	require_once('request_api.php');
 	$url = "https://p3.cynopsis.co/artemis_novumcapital/default/individual_risk";
 	$header = ['Content-Type: application/json', 'WEB2PY-USER-TOKEN:03a7a6cb-63b2-47b2-8715-af65aabf28ed'];
-	$sql_pending_user = "select * from consentium_user where last_name='Gusmar'";
+	$sql_pending_user = "select * from bbn_user where status='PENDING'";
 	$result_pending_user = mysqli_query($dbc, $sql_pending_user);
 	while ($user = mysqli_fetch_array($result_pending_user)) {
 		$data = array (
@@ -28,7 +28,7 @@
 			if (isset($data->approval_status)) {
 				$status = $data->approval_status;
 				if ($status == "CLEARED"){
-					$sql_update_status = "update consentium_user set status='".$status."' where user_id ='".$user['user_id']."'";
+					$sql_update_status = "update bbn_user set status='".$status."' where user_id ='".$user['user_id']."'";
 				}
 			}	
 		}

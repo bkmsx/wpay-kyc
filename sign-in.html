@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <link rel="stylesheet" type="text/css" href="jquery.flipcountdown.css" />
 <link href="sidemenu.css" rel="stylesheet">
 <link href="media-queries.css" rel="stylesheet">
@@ -69,11 +69,11 @@
 </div>
 <!------------ Navigation end ------------>
 <!------------ Sign up start ------------>
-<section class="signpage">
+<section id="signpage" class="signpage">
   <div class="container">
     <div class="signpage-container">
-      <h1>Sign In</h1>
-      <div class="h-line h-line-small" style="display:inline-block;"></div>
+      <h1 style="color:white">Sign In</h1>
+      <div class="h-line h-line-small" style="display:inline-block; background-color: white"></div>
       <form action="sign-in.php" method="post">
         <label id="error" style="margin-top:10px; margin-bottom:10px; color:red; display:none;">* Email or password is not correct</label>
         <div class="clearfix">
@@ -84,9 +84,9 @@
         </div>
        
         <br>
-        <div style="float:left;"><p style="color:#ba933b; padding-top:20px;"><a href="sign-up.php">Register an account?</a></p></div>
+        <div style="float:left;"><p style="padding-top:20px;" class="highlight-text"><a href="sign-up.php">Register an account?</a></p></div>
         <div style="float:right">
-          <input type="submit" name="submit" class="btn light-btn" value="Login" style="background-color:#CAA52D; font-weight:bold;">
+          <input type="submit" name="submit" class="btn light-btn" value="Login">
         </div>
         <div style="clear:both;"></div>
       </form>
@@ -100,7 +100,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-3 v-pad">
-        <div class="footer-logo"><img src="img/logo.png" alt=""></div>
+        <div class="footer-logo"><img src="img/logo.svg" alt=""></div>
       </div>
       <div class="col-md-4 col-sm-6 v-pad">
         <div style="text-align:center;">

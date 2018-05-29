@@ -27,4 +27,5 @@ function updateSheet($values, $row){
 	    ['valueInputOption' => 'USER_ENTERED']
 	);	
 }
+
 ?>

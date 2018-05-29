@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="img/logo.png"/>
 <link rel="stylesheet" type="text/css" href="jquery.flipcountdown.css" />
 <link href="sidemenu.css" rel="stylesheet">
 <link href="magnific-popup.css" rel="stylesheet">
@@ -29,50 +29,6 @@
 <!-- Start of consentium Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
 <!-- End of consentium Zendesk Widget script -->
-
-<style>
-.white-popup {
-	position: relative;
-	background: #252015;
-	width: auto;
-	max-width: 750px;
-	margin: 25px auto;
-	padding: 50px 25px;
-}
-.white-popup ul li {
-	margin: 5px 0;
-}
-.mfp-bg {
-	background: #ba933b;
-}
-.mfp-close-btn-in .mfp-close {
-	color: #ba933b;
-}
-.mfp-close {
-	font-size: 36px;
-}
-.mfp-content h2 {
-	color: #ba933b;
-}
-.mfp-content p {color:#837c6c;}
-
-span.account {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  background-color: #544949;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-span.account-title {
-  
-}
-
-p.account {
-  margin-top: 5px;
-}
-</style>
 
 <!-- Add sidemenu -->
 <script>
@@ -147,11 +103,11 @@ function submitForm(){
   <div class="container">
     <div class="settings-container">
       <h2>Please Send</h2>
-      <h2 style="color:#ba933b;"><?php echo $_POST['amount']." ".$_POST['currency']?></h2>
+      <h2 style="color:#EA7C70"><?php echo $_POST['amount']." ".$_POST['currency']?></h2>
       <br>
       <br>
       <div <?php if ($_POST['currency'] == "USD") echo "hidden";?>>
-        <h3>Destination Wallet Address</h3>
+        <h2>Destination Wallet Address</h2>
         <br>
         <img src="img/qr-code.png" alt="">
         <br>
@@ -162,19 +118,19 @@ function submitForm(){
         <div style="clear:both;"></div>
       </div>
       <div <?php if ($_POST['currency'] == "ETH") echo "hidden";?> >
-        <h3>Bank account detail</h3><br/>
-        <p class="account"><span class="account-title">Name:</span> <span class="account">Asia Focus Group Pte Ltd</span></p>
-        <p class="account"><span class="account-title">Address:</span> <span class="account"> #12-03, SBF Center, 160 Robinson Road Singapore 068914</span></p>
-        <p class="account"><span class="account-title">Account number: </span> <span class="account"> 503370850301 </span></p>
-        <p class="account"><span class="account-title">Swift code:</span> <span class="account"> OCBCSGSG </span></p>
-        <p class="account"><span class="account-title">Bank name:</span> <span class="account"> Oversea-Chinese Banking Corporation Limited Singapore </span></p>
-        <p class="account"><span class="account-title">Bank address:</span> <span class="account"> 65 Chulia Street OCBC, Singapore 049513 </span></p>
-        <p class="account"><span class="account-title">Comments / Notes: </span> <span class="account"> <?php echo $_COOKIE['email']; ?> </span></p>
+        <h2>Bank account detail</h2><br/>
+        <p class="account"><span class="account-title">Name:</span> <span class="account highlight-text">Asia Focus Group Pte Ltd</span></p>
+        <p class="account"><span class="account-title">Address:</span> <span class="account highlight-text"> #12-03, SBF Center, 160 Robinson Road Singapore 068914</span></p>
+        <p class="account"><span class="account-title">Account number: </span> <span class="account highlight-text"> 503370850301 </span></p>
+        <p class="account"><span class="account-title">Swift code:</span> <span class="account highlight-text"> OCBCSGSG </span></p>
+        <p class="account"><span class="account-title">Bank name:</span> <span class="account highlight-text"> Oversea-Chinese Banking Corporation Limited Singapore </span></p>
+        <p class="account"><span class="account-title">Bank address:</span> <span class="account highlight-text"> 65 Chulia Street OCBC, Singapore 049513 </span></p>
+        <p class="account"><span class="account-title">Comments / Notes: </span> <span class="account highlight-text"> <?php echo $_COOKIE['email']; ?> </span></p>
       </div>
       <br>
       <br>
       <h2>You will Receive:</h2>
-      <h2 style="color:#ba933b;"><?php echo $_POST['consentium_amount'] ?> Consentium Coin</h2>
+      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Consentium Coin</h2>
       <br>
       <br>
       <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.</p>
@@ -199,7 +155,7 @@ function submitForm(){
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-3 v-pad">
-        <div class="footer-logo"><img src="img/logo.png" alt=""></div>
+        <div class="footer-logo"><img src="img/logo.svg" alt=""></div>
       </div>
       <div class="col-md-4 col-sm-6 v-pad">
         <div style="text-align:center;">
@@ -217,7 +173,7 @@ function submitForm(){
           <span class="small-font">© 2018 ASIA FOCUS GROUP PTE LTD. All Rights Reserved.</span>
           <br><br>
           
-          <span class="small-font"><a href="#privacy" class="open-popup-link" style="color:#ba933b;">Privacy Policy</a></span>
+          <span class="small-font"><a href="#privacy" class="open-popup-link highlight-text">Privacy Policy</a></span>
 
         </div>
       </div>
@@ -233,7 +189,7 @@ function submitForm(){
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a style="color:#ba933b;" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
+  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a class="highlight-text" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 
