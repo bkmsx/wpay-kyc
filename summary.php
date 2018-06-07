@@ -119,18 +119,18 @@ function submitForm(){
       </div>
       <div <?php if ($_POST['currency'] == "ETH") echo "hidden";?> >
         <h2>Bank account detail</h2><br/>
-        <p class="account"><span class="account-title">Name:</span> <span class="account highlight-text">Asia Focus Group Pte Ltd</span></p>
-        <p class="account"><span class="account-title">Address:</span> <span class="account highlight-text"> #12-03, SBF Center, 160 Robinson Road Singapore 068914</span></p>
-        <p class="account"><span class="account-title">Account number: </span> <span class="account highlight-text"> 503370850301 </span></p>
-        <p class="account"><span class="account-title">Swift code:</span> <span class="account highlight-text"> OCBCSGSG </span></p>
-        <p class="account"><span class="account-title">Bank name:</span> <span class="account highlight-text"> Oversea-Chinese Banking Corporation Limited Singapore </span></p>
-        <p class="account"><span class="account-title">Bank address:</span> <span class="account highlight-text"> 65 Chulia Street OCBC, Singapore 049513 </span></p>
+        <p class="account"><span class="account-title">Name:</span> <span class="account highlight-text"> AMAZING APPVENTURES PTE. LTD.</span></p>
+        <p class="account"><span class="account-title">Address:</span> <span class="account highlight-text"> B-06-01, NO 1 BLK B, 6TH FLOOR, ATIVO PLAZA JALAN PJU 9/1, KUALA LUMPUR 52200, MALAYSIA</span></p>
+        <p class="account"><span class="account-title">Account number: </span> <span class="account highlight-text"> 3529528548</span></p>
+        <p class="account"><span class="account-title">Swift code:</span> <span class="account highlight-text"> UOVBSGSG</span></p>
+        <p class="account"><span class="account-title">Bank name:</span> <span class="account highlight-text"> United Overseas Bank Limited Co. </span></p>
+        <p class="account"><span class="account-title">Bank address:</span> <span class="account highlight-text"> 80 Raffles Place UOB Plaza 1 </span></p>
         <p class="account"><span class="account-title">Comments / Notes: </span> <span class="account highlight-text"> <?php echo $_COOKIE['email']; ?> </span></p>
       </div>
       <br>
       <br>
       <h2>You will Receive:</h2>
-      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Consentium Coin</h2>
+      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Eminent Token</h2>
       <br>
       <br>
       <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.</p>
@@ -170,7 +170,7 @@ function submitForm(){
       </div>
       <div class="col-md-4 col-sm-3 v-pad">
         <div class="copyright">
-          <span class="small-font">© 2018 ASIA FOCUS GROUP PTE LTD. All Rights Reserved.</span>
+          <span class="small-font">Copyright © 2018 Amazing Appventures Pte. Ltd.</span>
           <br><br>
           
           <span class="small-font"><a href="#privacy" class="open-popup-link highlight-text">Privacy Policy</a></span>
@@ -189,7 +189,7 @@ function submitForm(){
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a class="highlight-text" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
+  <p>In the event if you do not agree for Beep Beep Nation to process your data, please notify Beep Beep Nation via email at <a class="highlight-text" href="mailto:admin@amazingappventures.ltd">admin@amazingappventures.ltd</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 

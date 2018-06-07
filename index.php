@@ -160,9 +160,9 @@ function purchase() {
       </div>
       <br>
       <br>
-      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:support@consentium.net" class="highlight-text">support@consentium.net</a></span>
+      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:admin@amazingappventures.ltd" class="highlight-text">admin@amazingappventures.ltd</a></span>
     </div>
-    <div style="background:#4d3f1f; height:1px; width:100%; margin:60px 0;"></div>
+    <div style="background:#004d3f1f; height:1px; width:100%; margin:60px 0;"></div>
     <h2 style="font-weight:700;">Transaction History</h2>
     <div class="h-line" style="display:inline-block;"></div>
     <br>
@@ -221,7 +221,7 @@ function purchase() {
       </div>
       <div class="col-md-4 col-sm-3 v-pad">
         <div class="copyright">
-          <span class="small-font">© 2018 ASIA FOCUS GROUP PTE LTD. All Rights Reserved.</span>
+          <span class="small-font">Copyright © 2018 Amazing Appventures Pte. Ltd.</span>
           <br><br>
           
           <span class="small-font"><a href="#privacy" class="open-popup-link highlight-text">Privacy Policy</a></span>
@@ -240,7 +240,7 @@ function purchase() {
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a class="highlight-text" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
+  <p>In the event if you do not agree for Beep Beep Nation to process your data, please notify Beep Beep Nation via email at <a class="highlight-text" href="mailto:admin@amazingappventures.ltd">admin@amazingappventures.ltd.</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 

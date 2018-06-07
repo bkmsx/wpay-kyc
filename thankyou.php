@@ -126,7 +126,7 @@ function logOut(){
       <a href="index.php" class="btn light-btn">DASHBOARD</a>
       <br>
       <br>
-      <span class="small-font">you’ll be redirected to the dashboard shortly, <a href="dash-board.php" class="highlight-text">click here</a> if nothing happens</span>
+      <span class="small-font">you’ll be redirected to the dashboard shortly, <a href="index.php" class="highlight-text">click here</a> if nothing happens</span>
     </div>
   </div>
 </div>
@@ -151,7 +151,7 @@ function logOut(){
       </div>
       <div class="col-md-4 col-sm-3 v-pad">
         <div class="copyright">
-          <span class="small-font">© 2018 ASIA FOCUS GROUP PTE LTD. All Rights Reserved.</span>
+          <span class="small-font">Copyright © 2018 Amazing Appventures Pte. Ltd.</span>
           <br><br>
           
           <span class="small-font"><a href="#privacy" class="open-popup-link highlight-text">Privacy Policy</a></span>
@@ -170,7 +170,7 @@ function logOut(){
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Consentium to process your data, please notify Consentium via email at <a class="highlight-text" href="mailto:hello@consentium.net">hello@consentium.net.</a></p>
+  <p>In the event if you do not agree for Beep Beep Nation to process your data, please notify Beep Beep Nation via email at <a class="highlight-text" href="mailto:admin@amazingappventures.ltd">admin@amazingappventures.ltd</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 
