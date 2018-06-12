@@ -92,7 +92,21 @@ function handleInput() {
     var lastName = $('#lname').val();
     var erc20Address = $('#erc20_address').val();
     var date = $('#date').val();
-    if (firstName == '' || lastName == '' || erc20Address == '' || date == '') {
+    var regexName = /^[A-Za-z ]+$/;
+    var nameIsOk = regexName.test(firstName) && regexName.test(lastName);
+    if (firstName && lastName && !nameIsOk) {
+      $('#errorName').html('* Name only contains characters and space');
+    } else {
+      $('#errorName').html('');
+    }  
+    var regexAddr = /^0x[a-fA-F0-9]{40}$/;
+    var addressIsOk = regexAddr.test(erc20Address);
+    if (erc20Address && !addressIsOk) {
+      $('#errorAddr').html('* Address is not Ethereum address');
+    } else {
+      $('#errorAddr').html('');
+    }
+    if (firstName == '' || lastName == '' || erc20Address == '' || date == '' || !nameIsOk || !addressIsOk) {
         $('#nextBtn2').attr('disabled', 'disabled');
     } else {
         $('#nextBtn2').removeAttr('disabled');
@@ -104,12 +118,9 @@ function checkDate(){
     var date = $('#date').val();
     if (regex.test(date)){
         handleInput();
-        $('#date').css('background-color','#222121');
-        $('#date').removeAttr('title');
+        $('#errorDate').html('');
     } else {
-        $('#date').prop('title', 'Date format: DD/MM/YYYY');
-        $('#date').css('background-color',' #cc0000');
-        $('#nextBtn2').attr('disabled', 'disabled');
+        $('#errorDate').html('* Date format: DD/MM/YYYY');
     }
 }
 
@@ -205,6 +216,9 @@ function changeFile(){
       <h1>Basic Information</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
     <br>
+    <div id="errorName" style="color: red"></div>
+    <div id="errorDate" style="color: red"></div>
+    <div id="errorAddr" style="color: red"></div>
     <div class="row">
     <div class="col-md-6 v-pad">
       <label>First Name</label>
@@ -251,6 +265,7 @@ function changeFile(){
       <h1>Identity Image</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
     <br>
+    
     <div class="upload-box">
       <div id="hide">
         <label class="btn upload-btn">
@@ -260,7 +275,10 @@ function changeFile(){
       </div>
     </div>
     <br>
-    <br>
+    <div style="text-align: center; font-style:italic; font-size:15px; color: rgb(192, 191, 191)">You can only upload file jpg, jpeg or png and file size less than or equal 4 Mb.</div>
+    <br/>
+    <br/>
+    <br/>
     <div style="overflow:auto;">
     <div style="text-align:center;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
