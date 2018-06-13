@@ -14,10 +14,10 @@ function sendMail($to, $subject, $message) {
 		$mail->Port = 587;
 		$mail->SMTPSecure = 'tls';
 		$mail->SMTPAuth = true;
-		$mail->Username = "tien@beepbeepnation.com";
-		$mail->Password = "a123456789@";
+		$mail->Username = "ico@amazingappventures.ltd";
+		$mail->Password = "48#ZEdS1)kYm";
 
-	    $mail->setFrom('tien@beepbeepnation.com', 'The BeepbeepNation');
+	    $mail->setFrom('ico@amazingappventures.ltd', 'The BeepbeepNation');
 	    $mail->addAddress($to); 
 	    //Content
 	    $mail->isHTML(true);                               

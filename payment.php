@@ -33,7 +33,7 @@ $amount = $_POST['consentium_amount'];
 <link href="media-queries.css" rel="stylesheet">
 
 <script src="js/jquery.magnific-popup.min.js"></script>
-
+<script src="js/utilities.js"></script>
 <!-- Start of consentium Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
 <!-- End of consentium Zendesk Widget script -->
@@ -63,12 +63,6 @@ $amount = $_POST['consentium_amount'];
 function getCookie(key) {
   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
   return keyValue ? keyValue[2] : null;
-}
-
-function logOut(){
-    document.cookie = "email=";
-    document.cookie = "erc20_address=";
-    window.open("sign-in.php", "_self");
 }
 
 function countPayment(){
@@ -163,7 +157,7 @@ function submitSummary(){
       </div>
       <br>
       <br>
-      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:mailto:admin@amazingappventures.ltd" class="highlight-text">mailto:admin@amazingappventures.ltd</a></span>
+      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:mailto:admin@amazingappventures.ltd" class="highlight-text">admin@amazingappventures.ltd</a></span>
     </div>
   </div>
 </div>
@@ -175,17 +169,7 @@ function submitSummary(){
       <div class="col-md-4 col-sm-3 v-pad">
         <div class="footer-logo"><img src="img/logo.svg" alt=""></div>
       </div>
-      <div class="col-md-4 col-sm-6 v-pad">
-        <div style="text-align:center;">
-          <ul class="social">
-            <li><a href="https://www.facebook.com/profile.php?id=1545357085550769" target="_blank"><div class="social-icon"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-            <li><a href="https://twitter.com/ConsentiumCoin" target="_blank"><div class="social-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-						<li><a href="https://t.me/consentiumofficial" target="_blank"><div class="social-icon"><i class="fa fa-send" aria-hidden="true"></i></div></a></li>
-						<li><a href="https://bitcointalk.org/index.php?topic=2848892" target="_blank"><div class="social-icon"><i class="fa fa-btc" aria-hidden="true"></i></div></a></li>
-            <li><a href="https://medium.com/@consentium" target="_blank"><div class="social-icon"><i class="fa fa-medium" aria-hidden="true"></i></div></a></li>
-          </ul>
-        </div>
-      </div>
+      <?php include 'socials.html'; ?>
       <div class="col-md-4 col-sm-3 v-pad">
         <div class="copyright">
           <span class="small-font">Copyright © 2018 Amazing Appventures Pte. Ltd.</span>
