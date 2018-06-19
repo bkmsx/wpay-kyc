@@ -93,8 +93,13 @@ function getCookie(key) {
 }
 
 function purchase() {
-  form = document.getElementById("form_amount");
-  form.submit();
+  var amount = $('#consentium_amount').val();
+  if( amount < 400) {
+    $('#error').html('* Minimum investment is 400 Tokens');
+  } else {
+    form = document.getElementById("form_amount");
+    form.submit();
+  } 
 }
 </script>
 </head>
@@ -135,8 +140,9 @@ function purchase() {
           <p>Purchase Amount:</p>
         </div>
         <form action="payment.php" method="POST" id="form_amount">
+          <div id="error" style="color:red"></div>
           <div class="col-md-9 col-sm-9 v-pad">
-            <input type="text" name="consentium_amount" class="input-style" value="10">
+            <input type="number" name="consentium_amount" value="400" min="400" id="consentium_amount">
           </div>
           <div class="col-md-3 col-sm-3 v-pad purchase-text">
             <p>Your Wallet Address:</p>
@@ -167,9 +173,9 @@ function purchase() {
               <th>DATE</th>
               <th>CURRENCY</th>
               <th>AMOUNT</th>
-              <th>ADDRESS</th>
-              <th>EMINENT AMOUNT</th>
-              <th>EMINENT BONUS</th>
+              <th>EMN AMOUNT</th>
+              <th>EMN BONUS</th>
+              <th>Total EMN</th>
               <th>CONVERSION RATE</th>
               <th>STATUS</th>
             </tr>
@@ -181,9 +187,9 @@ function purchase() {
     echo "<td>".$transaction['date']."</td>";
     echo "<td>".$transaction['currency']."</td>";
     echo "<td>".$transaction['amount']."</td>";
-    echo "<td>".$transaction['address']."</td>";
     echo "<td>".$transaction['consentium_amount']."</td>";
     echo "<td>".$transaction['consentium_bonus']."</td>";
+    echo "<td>".$user['coin_number']."</td>";
     echo "<td>".$transaction['conversion_rate']."</td>";
     echo "<td>".$transaction['status']."</td>";
     echo "</tr>";

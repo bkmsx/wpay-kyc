@@ -114,7 +114,7 @@ function submitForm(){
       <div <?php if ($_POST['currency'] == "ETH") echo "hidden";?> >
         <h2>Bank account detail</h2><br/>
         <p class="account"><span class="account-title">Name:</span> <span class="account highlight-text"> AMAZING APPVENTURES PTE. LTD.</span></p>
-        <p class="account"><span class="account-title">Address:</span> <span class="account highlight-text"> B-06-01, NO 1 BLK B, 6TH FLOOR, ATIVO PLAZA JALAN PJU 9/1, KUALA LUMPUR 52200, MALAYSIA</span></p>
+        <p class="account"><span class="account-title">Address:</span> <span class="account highlight-text"> MOX, Level 3, 451 Joo Chiat Road, #03-02 Singapore 427664</span></p>
         <p class="account"><span class="account-title">Account number: </span> <span class="account highlight-text"> 3529528548</span></p>
         <p class="account"><span class="account-title">Swift code:</span> <span class="account highlight-text"> UOVBSGSG</span></p>
         <p class="account"><span class="account-title">Bank name:</span> <span class="account highlight-text"> United Overseas Bank Limited Co. </span></p>
@@ -127,7 +127,7 @@ function submitForm(){
       <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Eminent Token</h2>
       <br>
       <br>
-      <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.</p>
+      <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.<br/>*If you're doing a Telegraphic Transfer (TT) of USD500 or less, please ensure that you bear all sending and receiving costs.</p>
       <br>
       <br>
       <br>

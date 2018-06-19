@@ -6,6 +6,18 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
+// sendMail("shauntan3@gmail.com", getApplyKycTitle(), getApplyKycMessage("Shauntan"));
+// sendMail("shauntan3@gmail.com", getSuccessKycTitle(), getSuccessKycMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+// sendMail("shauntan3@gmail.com", getApplyTransactionTitle(), getApplyTransactionMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+// sendMail("shauntan3@gmail.com", getSuccessTransactionTitle(), getSuccessTransactionMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+// sendMail("shauntan3@gmail.com", getResubmissionTitle(), getResubmissionMessage("Shauntan"));
+// sendMail("shauntan3@gmail.com", getTransactionResubmissionTitle(), getTransactionResubmissionMessage("Shauntan"));
+// sendMail("shauntan3@gmail.com", getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage("shauntan3@gmail.com", "100"));
+// sendMail("shauntan3@gmail.com", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
+// sendMail("coco@novum.capital", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
+// sendMail("tien@novum.capital", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
+
+
 function sendMail($to, $subject, $message) {
 	$mail = new PHPMailer;
 	try {
@@ -17,7 +29,7 @@ function sendMail($to, $subject, $message) {
 		$mail->Username = "ico@amazingappventures.ltd";
 		$mail->Password = "48#ZEdS1)kYm";
 
-	    $mail->setFrom('ico@amazingappventures.ltd', 'The BeepbeepNation');
+	    $mail->setFrom('ico@amazingappventures.ltd', 'BeepBeep Nation');
 	    $mail->addAddress($to); 
 	    //Content
 	    $mail->isHTML(true);                               
@@ -29,15 +41,9 @@ function sendMail($to, $subject, $message) {
 	}
 }
 
-function getApplyTransactionMessage($username, $walletaddress) {
-	$message = file_get_contents("mail_templates/apply_transaction.html");
-	$message = str_replace("%username%", $username, $message);
-	$message = str_replace("%walletaddress%", $walletaddress, $message);
-	return $message;
-}
-
-function getApplyTransactionTitle() {
-	$title = "Thank you for submitting your transaction details!";
+// Kyc submission
+function getApplyKycTitle() {
+	$title = "Thank you for participating in our KYC!";
 	return $title;
 }
 
@@ -47,19 +53,9 @@ function getApplyKycMessage($username) {
 	return $message;
 }
 
-function getApplyKycTitle() {
-	$title = "Thank you for participating in our KYC!";
-	return $title;
-}
-
-function getSuccessTransactionMessage($username) {
-	$message = file_get_contents("mail_templates/success_transaction.html");
-	$message = str_replace("%username%", $username, $message);
-	return $message;
-}
-
-function getSuccessTransactionTitle() {
-	$title = "Yay, your payment has been verified!";
+// Kyc passed
+function getSuccessKycTitle() {
+	$title = "Yay, your account has been approved!";
 	return $title;
 }
 
@@ -70,8 +66,35 @@ function getSuccessKycMessage($username, $walletaddress) {
 	return $message;
 }
 
-function getSuccessKycTitle() {
-	$title = "Yay, your account has been approved!";
+//Transaction submission
+function getApplyTransactionTitle() {
+	$title = "Thank you for submitting your transaction details!";
+	return $title;
+}
+
+function getApplyTransactionMessage($username, $walletaddress) {
+	$message = file_get_contents("mail_templates/apply_transaction.html");
+	$message = str_replace("%username%", $username, $message);
+	$message = str_replace("%walletaddress%", $walletaddress, $message);
+	return $message;
+}
+
+//Transaction success
+function getSuccessTransactionTitle() {
+	$title = "Yay, your payment has been verified!";
+	return $title;
+}
+
+function getSuccessTransactionMessage($username, $walletaddress) {
+	$message = file_get_contents("mail_templates/success_transaction.html");
+	$message = str_replace("%username%", $username, $message);
+	$message = str_replace("%walletaddress%", $walletaddress, $message);
+	return $message;
+}
+
+//Kyc resubmission
+function getResubmissionTitle() {
+	$title = "Uh-oh, please complete your KYC submission!";
 	return $title;
 }
 
@@ -81,8 +104,9 @@ function getResubmissionMessage($username) {
 	return $message;
 }
 
-function getResubmissionTitle() {
-	$title = "Uh-oh, please complete your KYC submission!";
+//Transaction resubmission
+function getTransactionResubmissionTitle() {
+	$title = "[Payment Expired] Please resubmit your contribution details!";
 	return $title;
 }
 
@@ -92,8 +116,9 @@ function getTransactionResubmissionMessage($username) {
 	return $message;
 }
 
-function getTransactionResubmissionTitle() {
-	$title = "[Payment Expired] Please re-submit contribution details!";
+//Usd transaction reminder
+function getUsdTransactionDetailTitle() {
+	$title = "Please complete your Eminent purchase!";
 	return $title;
 }
 
@@ -104,8 +129,15 @@ function getUsdTransactionDetailMessage($email, $amount) {
 	return $message;
 }
 
-function getUsdTransactionDetailTitle() {
-	$title = "Please complete your Consentium purchase!";
+//ETH transaction reminder
+function getETHTransactionDetailTitle() {
+	$title = "Please complete your Eminent tokens purchase!";
 	return $title;
+}
+
+function getETHTransactionDetailMessage($amount) {
+	$message = file_get_contents("mail_templates/eth_transaction_detail.html");
+	$message = str_replace("%amount%", $amount, $message);
+	return $message;
 }
 ?>

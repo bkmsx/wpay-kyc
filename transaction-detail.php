@@ -21,7 +21,7 @@
 			$coin_number = $user['coin_number'] + $_POST['consentium_amount'];
 			$update_coin_sql = "update bbn_user set coin_number='".$coin_number."' where email='"
 			.$_POST['user_email']."'";
-			sendMail($_POST['user_email'], getSuccessTransactionTitle(), getSuccessTransactionMessage($user['last_name']));
+			sendMail($_POST['user_email'], getSuccessTransactionTitle(), getSuccessTransactionMessage($user['last_name'], $user['erc20_address']));
 			mysqli_query($dbc, $update_coin_sql);
 		}
 	}

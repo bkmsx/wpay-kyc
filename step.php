@@ -367,7 +367,13 @@ function changeFile(){
     <div class="col-md-6 v-pad">
         <label>Citizenship</label>
       <select id="citizenship" class="input-style" name="citizenship" oninput="this.className = ''">
-			<?php
+      <?php
+        function cmp($a, $b)
+        {
+            return strcmp($a['nationality'], $b['nationality']);
+        }
+        
+        usort($nations, "cmp");
 				foreach($nations as $nation){
 			?>
 				<option value="<?php echo $nation['nationality'];?>" <?php if($_COOKIE['citizenship'] == $nation['nationality']) echo 'selected';?>>
@@ -383,7 +389,12 @@ function changeFile(){
     <div class="col-md-6 v-pad">
         <label>Country Of Residency</label>
       <select id="country" class="input-style" name="country" oninput="this.className = ''">
-	  		<?php
+      <?php
+        function cmp1($a, $b)
+        {
+            return strcmp($a['country'], $b['country']);
+        }
+        usort($nations, "cmp1");
 				foreach($nations as $nation){
 			?>
 				<option value="<?php echo $nation['country'];?>" <?php if($_COOKIE['country'] == $nation['country']) echo 'selected';?>>

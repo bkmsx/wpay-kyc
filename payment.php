@@ -157,7 +157,7 @@ function submitSummary(){
       </div>
       <br>
       <br>
-      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:mailto:admin@amazingappventures.ltd" class="highlight-text">admin@amazingappventures.ltd</a></span>
+      <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:admin@amazingappventures.ltd" class="highlight-text">admin@amazingappventures.ltd</a></span>
     </div>
   </div>
 </div>
@@ -191,7 +191,7 @@ function submitSummary(){
   <br>
   <p>By submitting your personal information to us, you consent to such information being used by us for the provision of the Services and also for us to communicate with you. </p>
   <br>
-  <p>In the event if you do not agree for Beep Beep Nation to process your data, please notify Beep Beep Nation via email at <a class="highlight-text" href="mailto:mailto:admin@amazingappventures.ltd">admin@amazingappventures.ltd.</a></p>
+  <p>In the event if you do not agree for Beep Beep Nation to process your data, please notify Beep Beep Nation via email at <a class="highlight-text" href="mailto:admin@amazingappventures.ltd">admin@amazingappventures.ltd.</a></p>
 </div>
 <!---------- Privacy policy popup END ------------> 
 

@@ -16,7 +16,7 @@
   if ($_POST['currency'] == "USD") {
     sendMail($user_email, getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage($user_email, $_POST['amount']));
   } else {
-    sendMail($user_email, getApplyTransactionTitle(), getApplyTransactionMessage($_COOKIE['last_name'], $_COOKIE['erc20_address']));
+    sendMail($user_email, getETHTransactionDetailTitle(), getETHTransactionDetailMessage($_POST['amount']));
   }
 mysqli_query($dbc, $update_history_sql);
 mysqli_close($dbc);

@@ -534,7 +534,7 @@ input, textarea, select {
 	padding-right:20px;
 }
 
-input[type="text"],textarea, select, input[type="email"]
+input[type="text"],textarea, select, input[type="email"], input[type="number"]
 { 
 background: #444444;
   line-height:140%;  
@@ -542,7 +542,7 @@ background: #444444;
   color:white;
 }
 
-input[type="text"], input[type="email"]
+input[type="text"], input[type="email"], input[type="number"]
 {
   height:60px;
   width:100%;
@@ -616,7 +616,7 @@ background:#ba933b;
   color:#ba933b;
 }
 
-input[type="text"]:focus,textarea:focus
+input[type="text"]:focus,textarea:focus, input[type="number"]:focus
 {
   outline: none !important;
   background:#343433 !important;
@@ -944,7 +944,7 @@ User settings page
 	margin:0 auto;
 }
 
-#settings input[type="text"], #notify input[type="email"]
+#settings input[type="text"], #notify input[type="email"], #settings input[type="number"]
 {
   background: #222121;
   line-height:140%;  
