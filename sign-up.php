@@ -32,8 +32,16 @@ if (isset($_POST['submit'])) {
 			$sql_count_row = "select count(user_id) as row_count from bbn_user";
 			$row_count = mysqli_fetch_array(mysqli_query($dbc, $sql_count_row));
 			$row_number = $row_count['row_count'] + 2;
-			$sql_update = "insert into bbn_user (email, password, date, row_number) values 
-			('$email', '$encrypt_pass', now(), '$row_number')";
+            /*Inserted for affiliate tracking*/
+            $utm_source = "";
+            $click_id = "";
+            if($_COOKIE["utm_source"])
+                $utm_source = $_COOKIE["utm_source"];
+            if($_COOKIE["click_id"])
+                $click_id = $_COOKIE["click_id"];
+            /*End insert for affiliate tracking*/
+			$sql_update = "insert into bbn_user (email, password, date, row_number, utm_source, click_id) values 
+			('$email', '$encrypt_pass', now(), '$row_number', '$utm_source', '$click_id')";
 			if (mysqli_query($dbc, $sql_update)) {
 				setcookie("email", $email, time() + 86400 * 365);
 				header('Location: step.php');

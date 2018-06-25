@@ -4,7 +4,6 @@ $url = "https://api.coinmarketcap.com/v1/ticker/ethereum/";
 $result_json = callAPI("GET", $url);
 $result_object = json_decode($result_json);
 $ethereum_price = $result_object[0]->price_usd;
-$amount = $_POST['consentium_amount'];
 ?>
 <!doctype html>
 <html>
@@ -57,6 +56,7 @@ $amount = $_POST['consentium_amount'];
   	});
     var name = getCookie('email').split('%');
     document.getElementById("greeting").innerHTML = "Hi, " + name[0];
+    countPayment();
   });
 })(jQuery);
 
@@ -81,8 +81,13 @@ function countPayment(){
 }
 
 function submitSummary(){
-  form = document.getElementById("form_payment");
-  form.submit();
+  var amount = $('#consentium_amount').val();
+  if( amount < 400) {
+    $('#error').html('* Minimum Purchase Amount Is 400 Tokens');
+  } else {
+    form = document.getElementById("form_payment");
+    form.submit();
+  } 
 }
 
 </script>
@@ -121,12 +126,13 @@ function submitSummary(){
   <div class="container">
     <div class="settings-container">
       <div class="row">
+        <div id="error" style="color:red"></div>
         <div class="col-md-4 col-sm-4 v-pad purchase-text">
           <p>Eminent Token Amount:</p>
         </div>
         <form action="summary.php" method="POST" id="form_payment">
           <div class="col-md-8 col-sm-8 v-pad">
-            <input id="consentium_amount" name="consentium_amount" type="text" class="input-style" oninput="countPayment()" value="<?php echo $amount?>">
+            <input id="consentium_amount" name="consentium_amount" type="number" class="input-style" oninput="countPayment()" value="4000">
           </div>
           <div class="col-md-4 col-sm-4 v-pad purchase-text">
             <p>Wallet Authorization:</p>

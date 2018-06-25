@@ -119,15 +119,15 @@ function submitForm(){
         <p class="account"><span class="account-title">Swift code:</span> <span class="account highlight-text"> UOVBSGSG</span></p>
         <p class="account"><span class="account-title">Bank name:</span> <span class="account highlight-text"> United Overseas Bank Limited Co. </span></p>
         <p class="account"><span class="account-title">Bank address:</span> <span class="account highlight-text"> 80 Raffles Place UOB Plaza 1 </span></p>
-        <p class="account"><span class="account-title">Comments / Notes: </span> <span class="account highlight-text"> <?php echo $_COOKIE['email']; ?> </span></p>
+        <p class="account"><span class="account-title">Comments / Notes: </span> <span class="account highlight-text"> <?php echo $_COOKIE['email']; ?> </span></p><br/>
       </div>
       <br>
       <br>
       <h2>You will Receive:</h2>
-      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Eminent Token</h2>
+      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Eminent Tokens</h2>
       <br>
       <br>
-      <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.<br/>*If you're doing a Telegraphic Transfer (TT) of USD500 or less, please ensure that you bear all sending and receiving costs.</p>
+      <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.</p>
       <br>
       <br>
       <br>

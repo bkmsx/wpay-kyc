@@ -14,7 +14,7 @@ require 'PHPMailer/SMTP.php';
 // sendMail("shauntan3@gmail.com", getTransactionResubmissionTitle(), getTransactionResubmissionMessage("Shauntan"));
 // sendMail("shauntan3@gmail.com", getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage("shauntan3@gmail.com", "100"));
 // sendMail("shauntan3@gmail.com", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
-// sendMail("coco@novum.capital", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
+// sendMail("shauntan3@gmail.com", getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage("shauntan3@gmail.com", "200"));
 // sendMail("tien@novum.capital", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
 
 

@@ -1106,3 +1106,7 @@ button:disabled, button[disabled=disabled]{
 .light-text {
 	color: #E6E6E6;
 }
+
+.table-head th, td {
+	text-align: center !important;
+}

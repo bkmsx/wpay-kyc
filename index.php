@@ -1,4 +1,124 @@
 <?php
+/*affiliate id tracking*/
+/*parse url and get the last entry in the url*/
+if($_GET["utm_source"] && $_GET["click_id"])
+    {
+    setcookie("utm_source", $_GET["utm_source"], time()+(3600*24*999), "/", ".beepbeepnation.com");
+    setcookie("click_id", $_GET["click_id"], time()+(3600*24*999), "/", ".beepbeepnation.com");
+    }
+    
+$nurl = rtrim($_SERVER['REQUEST_URI'], '/');
+$lastchar = substr( $nurl, strrpos( $nurl, '/' )+1 );
+if($lastchar == 'x')
+    {
+    unset($_COOKIE["af_id"]);
+    $url = parse_url($_SERVER['REQUEST_URI']);
+    setcookie("af_id", "X", time()-(3600*24), "/", ".beepbeepnation.com");
+    $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
+    $nurl = rtrim($nurl, "x");
+    header("location: $nurl");
+    exit();
+    }
+else
+    {
+    $url = parse_url($_SERVER['REQUEST_URI']);
+    if($url["path"] != NULL)
+        {
+        $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
+        $url = explode("/", $nurl);
+        if(is_array($url))
+            {
+            $afid = $url[count($url)-1];
+            if($afid)
+                {
+                if(preg_match("/^x[a-z0-9]/", $afid))
+                    {
+                $dbhost = "localhost";
+                $dbuser = "makeacha_root";
+                $dbpass = "@q1w2e3r4@";
+                $dbname = "makeacha_lcxapp";
+                $connection = mysql_connect($dbhost,$dbuser,$dbpass)
+                    or die ("Couldn't connect to server");
+                $db = mysql_select_db($dbname)
+                    or die ("Couldn't select database");
+                    
+                $result = mysql_query("SELECT * FROM link_exceptions WHERE link_exception_text = '$afid'");
+                if(mysql_num_rows($result) == 0)
+                    {
+                        $afid = strtolower($afid);
+                        $afid = ltrim($afid, "x");
+                        $nurl = rtrim($nurl, "x$afid");
+                        
+                        $aftype = 0;
+                        $result = mysql_query("SELECT * FROM xperiences_affiliates WHERE affiliate_number='$afid'");
+                        if($row=mysql_fetch_array($result))
+                            {
+                            $afid=$row["affiliate_number"];
+                            $affiliate_id=$row["affiliate_id"];
+                            $aftype=$row["affiliate_type"];
+                            
+                            $ipaddress = '';
+                            if (getenv('HTTP_CLIENT_IP'))
+                                $ipaddress = getenv('HTTP_CLIENT_IP');
+                            else if(getenv('HTTP_X_FORWARDED_FOR'))
+                                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+                            else if(getenv('HTTP_X_FORWARDED'))
+                                $ipaddress = getenv('HTTP_X_FORWARDED');
+                            else if(getenv('HTTP_FORWARDED_FOR'))
+                                $ipaddress = getenv('HTTP_FORWARDED_FOR');
+                            else if(getenv('HTTP_FORWARDED'))
+                                $ipaddress = getenv('HTTP_FORWARDED');
+                            else if(getenv('REMOTE_ADDR'))
+                                $ipaddress = getenv('REMOTE_ADDR');
+                            else
+                                $ipaddress = 'UNKNOWN';
+                                
+                            $datetoday = date("Y-m-d");
+                            $result = mysql_query("SELECT * FROM affiliate_clicks WHERE click_date='$datetoday' AND user_ip='$ipaddress' AND server_uri='$nurl' AND affiliate_id=$affiliate_id AND server_source='beepbeepnation.com'");
+                            if(mysql_num_rows($result) == 0)
+                                $result = mysql_query("INSERT INTO affiliate_clicks (click_date, user_ip, server_uri, affiliate_id, server_source) VALUES ('$datetoday', '$ipaddress', '$nurl', '$affiliate_id', 'beepbeepnation.com')");
+                            }
+                        else
+                            $afid=0;
+                        $prevafid="";
+                        $prevnafid="";
+                        if($_COOKIE["af_id"])
+                            $prevafid = $_COOKIE["af_id"];
+                        if($_COOKIE["naf_id"])
+$prevnafid = $_COOKIE["naf_id"];
+                            
+                        if($aftype==0)
+                            {
+                            if($prevafid != "" && $prevafid != $afid)
+                                setcookie("af_id2", $prevafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("af_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            }
+                        elseif($aftype==1)
+                            {
+                            if($prevnafid != "" && $prevnafid != $afid)
+                                setcookie("naf_id2", $prevnafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("naf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+                            }
+                            
+                            
+                        mysql_close();
+                        
+                        header("location: $nurl");
+                        exit();    
+                        }
+                    }
+                }
+            }
+        }
+    }
+/*end affiliate tracking*/
+
   // if(!isset($_COOKIE['redirected'])){
   //   $useragent = $_SERVER['HTTP_USER_AGENT']; 
   //   $iPod = stripos($useragent, "iPod"); 
@@ -93,13 +213,8 @@ function getCookie(key) {
 }
 
 function purchase() {
-  var amount = $('#consentium_amount').val();
-  if( amount < 400) {
-    $('#error').html('* Minimum investment is 400 Tokens');
-  } else {
-    form = document.getElementById("form_amount");
-    form.submit();
-  } 
+  form = document.getElementById("form_amount");
+  form.submit();
 }
 </script>
 </head>
@@ -137,12 +252,32 @@ function purchase() {
     <div class="settings-container">
       <div class="row">
         <div class="col-md-3 col-sm-3 v-pad purchase-text">
-          <p>Purchase Amount:</p>
+          <!-- <p>Purchase Amount:</p> -->
         </div>
         <form action="payment.php" method="POST" id="form_amount">
-          <div id="error" style="color:red"></div>
-          <div class="col-md-9 col-sm-9 v-pad">
-            <input type="number" name="consentium_amount" value="400" min="400" id="consentium_amount">
+          
+          <div class="col-md-12 col-sm-12 v-pad">
+            <!-- <input type="number" name="consentium_amount" value="400" min="400" id="consentium_amount"> -->
+            <table  class="table-head">
+            <tr valign="center">
+              <th>Price (in USD)</th>
+              <th>Number of tokens not including bonus tokens</th>
+            </tr>
+            <?php
+              $token_array = [
+                "USD100" =>                "400",
+                "USD500" =>                "2,000",
+                "USD1,000" =>             "4,000",
+                "USD5,000" =>             "20,000",
+                "USD10,000" =>            "40,000",
+                "USD50,000" =>            "200,000",
+                "USD100,000" =>          "400,000"
+              ];
+              foreach($token_array as $key => $value) {
+                echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
+              }
+            ?>
+          </table>
           </div>
           <div class="col-md-3 col-sm-3 v-pad purchase-text">
             <p>Your Wallet Address:</p>
@@ -179,23 +314,23 @@ function purchase() {
               <th>CONVERSION RATE</th>
               <th>STATUS</th>
             </tr>
-<?php 
-  $transaction_history_sql = "select * from bbn_transaction where user_email = '$user_email' order by date desc";
-  $result = mysqli_query($dbc, $transaction_history_sql);
-  while ($transaction = mysqli_fetch_array($result)){
-    echo "<tr>";
-    echo "<td>".$transaction['date']."</td>";
-    echo "<td>".$transaction['currency']."</td>";
-    echo "<td>".$transaction['amount']."</td>";
-    echo "<td>".$transaction['consentium_amount']."</td>";
-    echo "<td>".$transaction['consentium_bonus']."</td>";
-    echo "<td>".$user['coin_number']."</td>";
-    echo "<td>".$transaction['conversion_rate']."</td>";
-    echo "<td>".$transaction['status']."</td>";
-    echo "</tr>";
-  }
-  mysqli_close($dbc);
-?>          
+          <?php 
+            $transaction_history_sql = "select * from bbn_transaction where user_email = '$user_email' order by date desc";
+            $result = mysqli_query($dbc, $transaction_history_sql);
+            while ($transaction = mysqli_fetch_array($result)){
+              echo "<tr>";
+              echo "<td>".$transaction['date']."</td>";
+              echo "<td>".$transaction['currency']."</td>";
+              echo "<td>".$transaction['amount']."</td>";
+              echo "<td>".$transaction['consentium_amount']."</td>";
+              echo "<td>".$transaction['consentium_bonus']."</td>";
+              echo "<td>".$user['coin_number']."</td>";
+              echo "<td>".$transaction['conversion_rate']."</td>";
+              echo "<td>".$transaction['status']."</td>";
+              echo "</tr>";
+            }
+            mysqli_close($dbc);
+          ?>          
           </table>
     </div>
   </div>

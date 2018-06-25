@@ -2,16 +2,20 @@
   require_once('mysqli_connect.php');
   require_once('send-mail.php');
   date_default_timezone_set("UTC");
-  $time = date("Y-m-d H:i:s", time()); 
+  $time = date("Y-m-d H:i:s"); 
   $user_email = $_COOKIE['email'];
   $user_email = str_replace("%40", "@", $user_email);
+  $token_bonus = 0;
+  if ($last_date <= '2018-07-03 00:00:00'){
+    $token_bonus = floor($_POST['consentium_amount'] * 0.05);
+  }
   $update_history_sql = "insert into bbn_transaction (user_email, currency, amount, address, 
-  consentium_amount, status, date, conversion_rate) values ('"
+  consentium_amount, consentium_bonus, status, date, conversion_rate) values ('"
   .$user_email."','"
   .$_POST['currency']."','"
   .$_POST['amount']."','"
   .$_POST['address']."','"
-  .$_POST['consentium_amount']."', 'Waiting', '$time','"
+  .$_POST['consentium_amount']."', ".$token_bonus.", 'Waiting', '$time','"
   .$_POST['conversion_rate']."')";
   if ($_POST['currency'] == "USD") {
     sendMail($user_email, getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage($user_email, $_POST['amount']));

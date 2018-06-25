@@ -18,7 +18,7 @@
 			$user_sql = "select * from bbn_user where email='".$_POST['user_email']."'";
 			$user_result = mysqli_query($dbc, $user_sql);
 			$user = mysqli_fetch_array($user_result);
-			$coin_number = $user['coin_number'] + $_POST['consentium_amount'];
+			$coin_number = $user['coin_number'] + $_POST['consentium_amount'] + $_POST['consentium_bonus'];
 			$update_coin_sql = "update bbn_user set coin_number='".$coin_number."' where email='"
 			.$_POST['user_email']."'";
 			sendMail($_POST['user_email'], getSuccessTransactionTitle(), getSuccessTransactionMessage($user['last_name'], $user['erc20_address']));
