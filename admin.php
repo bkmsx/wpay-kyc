@@ -5,14 +5,13 @@
 		if(empty($_POST['g-recaptcha-response'])) {
 			$err = "* Please check captcha";
 		} 
-		elseif ($_POST['user'] == "novumcapital" && $_POST['password'] == "N0vumCapital8!"){
+		elseif ($_POST['user'] == "beepbeep" && $_POST['password'] == "Deamnoon3!#"){
 			header("Location: transaction-list.php");
 			setcookie('user', 'NoVum');
 		} else {
 			$err = "* Username or password are not correct";
 		}
 	}
-
 ?>
 
 <!DOCTYPE html>

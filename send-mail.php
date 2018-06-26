@@ -6,17 +6,19 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
-// sendMail("shauntan3@gmail.com", getApplyKycTitle(), getApplyKycMessage("Shauntan"));
-// sendMail("shauntan3@gmail.com", getSuccessKycTitle(), getSuccessKycMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
-// sendMail("shauntan3@gmail.com", getApplyTransactionTitle(), getApplyTransactionMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
-// sendMail("shauntan3@gmail.com", getSuccessTransactionTitle(), getSuccessTransactionMessage("Shauntan", "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
-// sendMail("shauntan3@gmail.com", getResubmissionTitle(), getResubmissionMessage("Shauntan"));
-// sendMail("shauntan3@gmail.com", getTransactionResubmissionTitle(), getTransactionResubmissionMessage("Shauntan"));
-// sendMail("shauntan3@gmail.com", getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage("shauntan3@gmail.com", "100"));
-// sendMail("shauntan3@gmail.com", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
-// sendMail("shauntan3@gmail.com", getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage("shauntan3@gmail.com", "200"));
-// sendMail("tien@novum.capital", getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));
+// testMail("coco@novum.capital", "Coco");
+// testMail("shauntan3@gmail.com", "Shauntan");
 
+function testMail($test_mail, $test_name) {
+	sendMail($test_mail, getApplyKycTitle(), getApplyKycMessage($test_name));
+	sendMail($test_mail, getSuccessKycTitle(), getSuccessKycMessage($test_name, "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+	sendMail($test_mail, getApplyTransactionTitle(), getApplyTransactionMessage($test_name, "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+	sendMail($test_mail, getSuccessTransactionTitle(), getSuccessTransactionMessage($test_name, "0x9208b9e23ecdeefbbbe65d7022d19f9d4a9d64a4"));
+	sendMail($test_mail, getResubmissionTitle(), getResubmissionMessage($test_name));
+	sendMail($test_mail, getTransactionResubmissionTitle(), getTransactionResubmissionMessage($test_name));
+	sendMail($test_mail, getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage($test_mail, "100"));
+	sendMail($test_mail, getETHTransactionDetailTitle(), getETHTransactionDetailMessage("1"));	
+}
 
 function sendMail($to, $subject, $message) {
 	$mail = new PHPMailer;
