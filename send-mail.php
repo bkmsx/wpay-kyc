@@ -8,6 +8,12 @@ require 'PHPMailer/SMTP.php';
 
 // testMail("coco@novum.capital", "Coco");
 // testMail("shauntan3@gmail.com", "Shauntan");
+testUserWithoutTransaction("tien@novum.capital", "Tien");
+testUserWithoutTransaction("coco@novum.capital", "Coco");
+
+function testUserWithoutTransaction($test_mail, $test_name) {
+	sendMail($test_mail, getUserWithoutTransactionTitle(), getUserWithoutTransactionMessage($test_name));
+}
 
 function testMail($test_mail, $test_name) {
 	sendMail($test_mail, getApplyKycTitle(), getApplyKycMessage($test_name));
@@ -140,6 +146,18 @@ function getETHTransactionDetailTitle() {
 function getETHTransactionDetailMessage($amount) {
 	$message = file_get_contents("mail_templates/eth_transaction_detail.html");
 	$message = str_replace("%amount%", $amount, $message);
+	return $message;
+}
+
+//check user without transaction
+function getUserWithoutTransactionTitle() {
+	$title = "[TOKEN BONUS] Have you purchased your Eminent tokens yet?";
+	return $title;
+}
+
+function getUserWithoutTransactionMessage($name) {
+	$message = file_get_contents("mail_templates/user_without_transaction.html");
+	$message = str_replace("%name%", $name, $message);
 	return $message;
 }
 ?>
