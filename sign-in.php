@@ -107,7 +107,7 @@ if(isset($_POST['submit'])) {
       <h1 style="color:white">Sign In</h1>
       <div class="h-line h-line-small" style="display:inline-block; background-color: white"></div>
       <form action="sign-in.php" method="post">
-        <label id="error" style="margin-top:10px; margin-bottom:10px; color:red;"><?php if($err) echo $err;?></label>
+        <label id="error" style="margin-top:10px; margin-bottom:10px; color:red;"><?php if(isset($err)) echo $err;?></label>
         <div class="clearfix">
           <input type='email' class="input-style" name="email" placeholder="Email Address" required/>
         </div>

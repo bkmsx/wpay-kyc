@@ -23,18 +23,14 @@
 		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
 	</ul>
 </div>
-<h1>User list</h1>
+<h1>User Tracking list</h1>
 <table>
 	<tr>
 		<th>#</th>
 		<th>Email</th>
 		<th>Name</th>
-		<th>Coin number</th>
-		<th>Date of birth</th>
-		<th>Citizenship</th>
-		<th>TimeStamp</th>
-		<th>Status</th>
-		<th>Passport</th>
+		
+		<th>Action</th>
 	</tr>
 <?php
 require_once('mysqli_connect.php');
@@ -45,23 +41,10 @@ while ($user = mysqli_fetch_array($result)) {
 	$id += 1;
 	echo "<tr>";
 	echo "<td>".$id."</td>";
-	echo "<td><a href='javascript: showUserDetail(\"".$user['email']."\")' class='highlight-text'>".$user['email']."</a></td>";
+	echo "<td><a href='' class='highlight-text'>".$user['email']."</a></td>";
 	echo "<td>".$user['first_name']." ".$user['last_name']."</td>";
-	echo "<td>".$user['coin_number']."</td>";
-	echo "<td>".$user['date_birth']."</td>";
-	echo "<td>".$user['citizenship']."</td>";
-	echo "<td>".$user['date']."</td>";
-	if ($user['status'] == "CLEARED") {
-		echo "<td style='color:green'>".$user['status']."</td>";
-	} else {
-		echo "<td style='color:red'>".$user['status']."</td>";
-	}
-	
-	if(!empty($user['passport_location'])) {
-		echo "<td><a class='highlight-text' href='javascript: showImage(\"".$user['passport_location']."\",\"".$user['first_name']." ".$user['last_name']."\")'>View</a></td>";
-	} else {
-		echo "<td/>";
-	}
+
+	echo "<td><a href='user-tracking-list.php?id=".$user['user_id']."' class='highlight-text'>View</a></td>";
 	echo "</tr>";
 }
 mysqli_close($dbc);

@@ -40,12 +40,14 @@ function showTransactionDetail(transaction_id){
 </head>
 <body>
 <div class="menu">
-	<div id="logo"> </div>
-	<ul>
-		<li><a class="link" href="user-list.php">Users</a></li>
+<div id="logo"> </div>
+
+<ul>
+	<li><a class="link" href="user-list.php">Users</a></li>
 		<li><a class="link" href="transaction-list.php">Transactions</a></li>
+		<li><a class="link" href="tracking-list.php">Tracking</a></li>
 		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
-	</ul>
+</ul>
 </div>
 <h1>Transaction list</h1>
 <div style="overflow-x:auto;">

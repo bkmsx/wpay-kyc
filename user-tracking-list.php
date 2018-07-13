@@ -3,6 +3,14 @@
 		echo "You don't have access to this page";
 		exit;
 	}
+	require_once('mysqli_connect.php');
+	$id=$_GET['id'];
+	$sqls = "select * from bbn_user where user_id = '$id'";
+	$results = mysqli_query($dbc, $sqls);
+	$users = mysqli_fetch_array($results);
+	$email = $users['email'];
+	$name = $users['first_name']." ".$users['last_name'];
+	$clickid = $users['click_id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,48 +31,33 @@
 		<li><a class="logout" href="#" onclick="logOut()">Logout</a></li>
 	</ul>
 </div>
-<h1>User list</h1>
+<h1><?php echo $name . "(" . $email . ")";
+ ?></h1>
 <table>
 	<tr>
-		<th>#</th>
+		<th>Affiliate Number</th>
 		<th>Email</th>
 		<th>Name</th>
-		<th>Coin number</th>
-		<th>Date of birth</th>
-		<th>Citizenship</th>
-		<th>TimeStamp</th>
-		<th>Status</th>
-		<th>Passport</th>
+		
+		
 	</tr>
 <?php
-require_once('mysqli_connect.php');
-$sql = "select * from bbn_user";
-$result = mysqli_query($dbc, $sql);
+require_once('mysqli_connects.php');	
+$sqls = "select * from xperiences_affiliates where affiliate_number = '$clickid'";
+$results = mysqli_query($dbc1, $sqls);
 $id = 0;
-while ($user = mysqli_fetch_array($result)) {
+while ($users = mysqli_fetch_array($results)) {
 	$id += 1;
 	echo "<tr>";
-	echo "<td>".$id."</td>";
-	echo "<td><a href='javascript: showUserDetail(\"".$user['email']."\")' class='highlight-text'>".$user['email']."</a></td>";
-	echo "<td>".$user['first_name']." ".$user['last_name']."</td>";
-	echo "<td>".$user['coin_number']."</td>";
-	echo "<td>".$user['date_birth']."</td>";
-	echo "<td>".$user['citizenship']."</td>";
-	echo "<td>".$user['date']."</td>";
-	if ($user['status'] == "CLEARED") {
-		echo "<td style='color:green'>".$user['status']."</td>";
-	} else {
-		echo "<td style='color:red'>".$user['status']."</td>";
-	}
+	echo "<td>".$users['affiliate_number']."</td>";
+	echo "<td>".$users['affiliate_email']."</td>";
+	echo "<td>".$users['affiliate_name']."</td>";
 	
-	if(!empty($user['passport_location'])) {
-		echo "<td><a class='highlight-text' href='javascript: showImage(\"".$user['passport_location']."\",\"".$user['first_name']." ".$user['last_name']."\")'>View</a></td>";
-	} else {
-		echo "<td/>";
-	}
+
+	
 	echo "</tr>";
 }
-mysqli_close($dbc);
+mysqli_close($dbc1);
 ?>
 </table>
 <!-- The Modal -->

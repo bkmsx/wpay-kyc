@@ -24,36 +24,7 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 		exit;
 	}
 
-	//check if file is ok
-	if(isset($_FILES['file'])) {
-		$name = $_FILES['file']['name'];
-		$tmp_name = $_FILES['file']['tmp_name'];
-		$extension = strtolower(substr($name, strlen($name) - 3));
-		$location = 'files/'.time().'.'.$extension;
-		$type = $_FILES['file']['type'];
-		$size = $_FILES['file']['size'];
-		$max_size = 4194304;
-		if (isset($name)){
-			if (!empty($name)){
-				if (($extension == 'jpg' || $extension == 'png' || $extension == 'jpeg' || $extension == 'pdf') && $size <= $max_size) {
-					
-					if (move_uploaded_file($tmp_name, $location)){
-						
-					} else {
-						$err = "Problem upload image, please try with file size smaller. Thank you!";
-						setcookie('error', 'file', time() + 86400 * 1);
-						include 'error_page.php';
-						exit;
-					}
-				} else {
-					$err = "Please upload only jpg, jpeg, png or pdf file format. File size must be less than 4MB.";
-					setcookie('error', 'file', time() + 86400 * 1);
-					include 'error_page.php';
-					exit;
-				}
-			}
-		} 
-	}
+	
 
 	// send kyc submission mail
 	require_once('send-mail.php');
@@ -246,7 +217,7 @@ function handleInput() {
 }
 
 function checkDate(){
-    var regex = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/g;
+    var regex = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/g;
     var date = $('#date').val();
     if (regex.test(date)){
         handleInput();
@@ -303,7 +274,7 @@ function changeFile(){
   <div class="step-title">
     <div class="terms"><h3>Terms & Conditions</h3></div>
     <div class="basic-info"><h3>Basic Information</h3></div>
-    <div class="identity"><h3>Identity Images</h3></div>
+    <div class="identity"><h3>Completion</h3></div>
     <div style="clear:both;"></div>
   </div>
  </div>
@@ -376,7 +347,7 @@ function changeFile(){
         usort($nations, "cmp");
 				foreach($nations as $nation){
 			?>
-				<option value="<?php echo $nation['nationality'];?>" <?php if($_COOKIE['citizenship'] == $nation['nationality']) echo 'selected';?>>
+				<option value="<?php echo $nation['nationality'];?>" <?php if(isset($_COOKIE['citizenship']) && $_COOKIE['citizenship'] == $nation['nationality']) echo 'selected';?>>
 					<?php echo $nation['nationality'];?>
 				</option>
 			<?php } ?>
@@ -397,7 +368,7 @@ function changeFile(){
         usort($nations, "cmp1");
 				foreach($nations as $nation){
 			?>
-				<option value="<?php echo $nation['country'];?>" <?php if($_COOKIE['country'] == $nation['country']) echo 'selected';?>>
+				<option value="<?php echo $nation['country'];?>" <?php if(isset($_COOKIE['country']) && $_COOKIE['country'] == $nation['country']) echo 'selected';?>>
 					<?php echo $nation['country'];?>
 				</option>
 			<?php } ?>
@@ -409,13 +380,13 @@ function changeFile(){
     <div style="overflow:auto;">
     <div style="text-align:center;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn2" onclick="nextPrev(1)">Next</button>
+      <button type="button" id="nextBtn2" onclick="nextPrev(1)">Submit</button>
     </div>
   </div>
   </div>
 
   <!-- Upload photo -->
-  <div class="tab" hidden>
+  <!-- <div class="tab" hidden>
     <div style="text-align:center;">
       <h1>Identity Image</h1><div class="h-line" style="display:inline-block;"></div>
     </div>
@@ -441,7 +412,7 @@ function changeFile(){
       <button type="button" id="submitBtn" onclick="nextPrev(1)">Next</button>
     </div>
     </div>
-  </div>
+  </div> -->
   <div style="text-align:center; overflow:auto; padding-top:150px;" id="waiting_message" hidden>
     <label>Please do not refresh or navigate away from this page while your details are being submitted...</label>
   </div>
@@ -504,7 +475,7 @@ if (getCookie('error') == 'address') {
 } else if (getCookie('kyc_done') == 'true') {
 	var x = document.getElementsByClassName('tab'); 
 	x[0].style.display = 'none';
-	currentTab = 3;
+	currentTab = 2;
 }
 showTab(currentTab); // Display the crurrent tab
 

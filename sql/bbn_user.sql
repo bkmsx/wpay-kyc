@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2018 at 02:11 PM
+-- Generation Time: Jul 09, 2018 at 10:30 AM
 -- Server version: 5.5.59-cll
 -- PHP Version: 5.6.30
 
@@ -139,7 +139,7 @@ INSERT INTO `bbn_user` (`user_id`, `email`, `password`, `first_name`, `last_name
 (335, 'josgithinji87@gmail.com', '$2y$10$PmuiGcLBSHtlQ6HVhwl37.zHFurOG0.GdLKu42RZ.B/HkLtz7f.IG', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-30 18:19:35', '', 86, '', 0, '', ''),
 (336, 'vnaumkin@narod.ru', '$2y$10$Dn8QyjhDdEIt03uCL2BCd.rUHEq7Mkhsf0q1KzUotOJF7RdkLYV8a', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-30 20:42:25', '', 87, '', 0, '', ''),
 (337, 'lobovolcan1999@gmail.com', '$2y$10$n/A1YYoxvG1GZsFBISMHWOKIc.nRm6LdH1agKvFi/paSrLTOG1yCa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-30 20:44:58', '', 88, '', 0, '', ''),
-(338, 'Arayu107@gmail.com', '$2y$10$R1ZWX3av1J3vSF3MOOEaEeI6E0k.SA6Asb.hcXOSMnoeRAS2iBkGq', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-30 22:13:28', '', 89, '', 0, '', ''),
+(338, 'Arayu107@gmail.com', '$2y$10$R1ZWX3av1J3vSF3MOOEaEeI6E0k.SA6Asb.hcXOSMnoeRAS2iBkGq', 'Harwansyah', 'Syah', '08101987', 'INDONESIAN', 'INDONESIA', 'files/1530687022.jpg', '2018-07-04 14:50:25', 'PENDING', 89, '0x116c3798fdcb9ae88f7f3a4af3985651d04230f7', 0, '', ''),
 (339, 'erikaoliveira.871@gmail.com', '$2y$10$e5IhkF6Is4xtC2CUdxJUqOWF.BRidSykI4puEJaIO5eF2s7Pq80W2', 'Erika', 'Araujo', '29/08/1987', 'BRAZILIAN', 'BRAZIL', 'files/1530371624.png', '2018-06-30 23:13:47', 'CLEARED', 90, '0x943E84d3a67CA35E5D22A18528E1e4709D769c62', 0, '', ''),
 (340, 'ssm767@gmail.com', '$2y$10$chbRbfeqeVCnsceJOimd7OWgej1H4jK4qEuhbyyX8.aWon1/Mb0zG', 'Manuel', 'Suarez Sanchez', '10/04/1986', 'SPANISH', 'SPAIN', 'files/1530373674.jpg', '2018-06-30 23:47:57', 'CLEARED', 91, '0xc2321b5c69F6de427c7F61Cc45Aa79660a106748', 0, '', ''),
 (341, 'newdoms14@gmail.com', '$2y$10$iCj9t40/57NUPXmhQtzRS.Gj8ezF.B8RSZFFBl/lohI6k5hzvsFUW', NULL, NULL, NULL, NULL, NULL, NULL, '2018-06-30 23:53:00', '', 92, '', 0, '', ''),
@@ -171,7 +171,32 @@ INSERT INTO `bbn_user` (`user_id`, `email`, `password`, `first_name`, `last_name
 (367, 'vampirates2457@gmail.com', '$2y$10$SjcDW25fA.rpazAVCFqXZ.Zct1vpB45iy54kysEjGpz4SMh0y/8hK', 'Tu', 'DauNguyenDinh', '09/11/1996', 'VIETNAMESE', 'VIETNAM', 'files/1530533818.png', '2018-07-02 20:17:01', 'CLEARED', 118, '0x973369238FB333C744747F7adb1973C54c2972AA', 0, '', ''),
 (368, 'moyobadejo@yahoo.com', '$2y$10$9P1OrhXWvDOXJt/1e35L.ejyyYhilE9QyLAZdEyOmwW2jxDWsGshm', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-02 20:19:14', '', 119, '', 0, '', ''),
 (369, 'skopelja@gmail.com', '$2y$10$pt1faYQvcdsOtfGPqnGJq.GUpbbNA.3GvBXxGsK2KmTenNXhLnhmu', 'Slobodan', 'Skopelja', '19/03/1967', 'CROATIAN', 'CROATIA', 'files/1530558682.jpg', '2018-07-03 03:11:25', 'CLEARED', 120, '0xFbfbfB6605CCDE599108F647f68CCCb566d7d715', 0, '', ''),
-(370, '6maghor9@gmail.com', '$2y$10$7Fx2bDvNYXOTuIsTO/tvFOroEXoqhlIBMrZ4EyBEBEScCu9SwYy2y', 'Magdeline', 'Hor', '08/03/1974', 'SINGAPOREAN', 'SINGAPORE', 'files/1530577822.jpg', '2018-07-03 08:30:25', 'CLEARED', 121, '0x012f7dbc78480de85562a2036ca4dd1a82d25ae5', 0, '', '');
+(370, '6maghor9@gmail.com', '$2y$10$7Fx2bDvNYXOTuIsTO/tvFOroEXoqhlIBMrZ4EyBEBEScCu9SwYy2y', 'Magdeline', 'Hor', '08/03/1974', 'SINGAPOREAN', 'SINGAPORE', 'files/1530577822.jpg', '2018-07-03 08:30:25', 'CLEARED', 121, '0x012f7dbc78480de85562a2036ca4dd1a82d25ae5', 0, '', ''),
+(371, 'A.rennady.go@gmail.com', '$2y$10$G3SGRU.POrM1J9MJBgTQd.4wmvVBAtFPdzmm20R.nvJ6TX/bGdNG6', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-03 15:08:27', '', 122, '', 0, '', ''),
+(372, 'amino.komputer@gmail.com', '$2y$10$7KmvAWGdCta9jfd4InVVCu8fqRmBzrTcoBKFu75mjlY7hrvPBrOPW', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-03 15:35:50', '', 123, '', 0, '', ''),
+(373, 'magdeline.hor@gmail.com', '$2y$10$wSQc5hAOnzjvhXOv31bU6.xQyjE6AORpxintF40CU/7wZTmYFRTCq', 'Magdeline', 'Hor', '08/03/1974', 'SINGAPOREAN', 'SINGAPORE', 'files/1530623289.pdf', '2018-07-03 21:08:12', 'CLEARED', 124, '0xf9ad9bc91e9fb6f80479140bb58a18c8dfa14833', 0, '', ''),
+(374, 'bunkoead@gmail.com', '$2y$10$Y/xLqthI.nW8jl7Hd5f.aegDAfhBN7BB8LqEmtqDr8VF0WshE8wG.', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-03 20:54:14', '', 125, '', 0, '', ''),
+(375, 'mfardin380@gmail.com', '$2y$10$1Ew5wiLcrotndcA1VFMrOug9iT4lfAIqmruGlYMRHl7WclPmxJkDS', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 02:48:11', '', 126, '', 0, '', ''),
+(376, 'bechiberenger7@gmail.com', '$2y$10$KHbR/c2efl8dF871u79a6ebJsmKfAa1fnGur6QXn8kNDPXrCg5nGm', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 06:39:38', '', 127, '', 0, '', ''),
+(377, 'jacksonjavierchacon@gmail.com', '$2y$10$WWc2RVZxVQRuCjiqF7dhh.6fn7M9LiyI0nKCBixUKkiRS7cgrGnVW', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 08:16:00', '', 128, '', 0, '', ''),
+(378, 'shahriarudoy1191@gmail.com', '$2y$10$4OowyLeBBLDAiQsZiiLQoeoWMPq/67ZnXZnE0QkiJwR0u6ABc5eUa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 15:27:07', '', 129, '', 0, '', ''),
+(379, 'jessicaijeoma@gmail.com', '$2y$10$EIAlptcEYHuP9hWKnjiba.ioDunAapI6.YrRcShOI2ue4NRKm2K/e', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 17:42:22', '', 130, '', 0, '', ''),
+(380, 'Pralaypaul10@gmail.com', '$2y$10$/ry.OjO1.96K.Xut/HT41uw9YP7EDF08YPuazZqDM.E5ytmjyf5YG', 'Nepal Chandra', 'paul', '05/08/1965', 'BANGLADESHI', 'BANGLADESH', 'files/1530709207.jpg', '2018-07-04 21:00:10', 'CLEARED', 131, '0xf2A902aA85F7A98b8a04ae7eEead0065b8839AEc', 0, '', ''),
+(381, 'semachka33@gmail.com', '$2y$10$of.h9vyzhyslaEy7OhWILOwJVJcVRCcmw0Ffy4j0.7NVLHNKpIQu2', 'Dmytro', 'Yaremchuk', '19/06/1975', 'UKRAINIAN', 'UKRAINE', 'files/1530711673.jpg', '2018-07-04 21:41:15', 'PENDING', 132, '0x691BBd3DD15e4b968C09c1777f3a001D77186712', 0, '', ''),
+(382, 'poket2853@gmail.com', '$2y$10$EMX3wT4socfJ9qTlohNHzeZ52GTX02Xlst35HqUgLivI0arHyg.qe', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-04 23:10:01', '', 133, '', 0, '', ''),
+(383, 'gsubtil@ziggity.com', '$2y$10$PtRG6kVJChldyVaa31ybiemwBtYF5IOjxlGaDXcOAnuNX4pAg421G', 'Gautier', 'Subtil', '23/10/1966', 'FRENCH', 'FRANCE', 'files/1530721146.pdf', '2018-07-05 00:19:09', 'CLEARED', 134, '0x3873bb2e435821c9c2c9cba8d7799f712bd1a1d7', 0, '', ''),
+(384, 'dabillas96@gmail.com', '$2y$10$eH5fGrsm2P79mbkAabDNA.oFkyKgkGpL0V2VnhA/FUjy6kTZUCEUO', 'Oladipupo', 'Paul', '31/07/1997', 'NIGERIAN', 'NIGERIA', 'files/1530730128.jpg', '2018-07-05 02:48:51', 'CLEARED', 135, '0xd20ab8C3965a816e9Be6cE29dA9EC4FEc0E9fDbC', 0, '', ''),
+(385, 'vahejake90@gmail.com', '$2y$10$./pLAGIOy7X0/QcGWewixu8Kel5Ap7xDxBxtFgARYCrKQcxhtKNoa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-05 04:33:22', '', 136, '', 0, '', ''),
+(386, 'xmanft007@gmail.com', '$2y$10$qI1HPiFf646ygzjZrSpf/OHT/udqF980N0bWYqVUQFCPjcwSc4Wgi', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-05 04:38:04', '', 137, '', 0, '', ''),
+(387, 'hevansisme@icloud.com', '$2y$10$4tsNKTtlgfc5n2nVuspl2OhHmgWcXMe0IyJ5/dkq7nnK5pjfLRZNO', 'Evans', 'Lim Ee Meng', '20041983', 'MALAYSIAN', 'MALAYSIA', 'files/1530759963.png', '2018-07-05 11:06:05', 'PENDING', 138, '0x619564563aF67BF8729dd5459bCFaAA6dd151CdF', 0, '', ''),
+(388, 'baxter_chan@hotmail.com', '$2y$10$ajsf4Nx.Rhou8T8O40DZ9uKv4zEBXd8i3MIvyyXfiwtR.FfaaoQ32', 'big+', 'nigga', '06/03/1993', 'SINGAPOREAN', 'SINGAPORE', 'files/1530759764.jpg', '2018-07-05 11:02:48', 'CLEARED', 139, '0x95be88b05855b7573e480d29bcd921da03ccaf41', 0, '', ''),
+(389, 'hi@helpdesk.com', '$2y$10$N.n3p/jMxgFWkiYtBPbgoe5IORmj1iTK8MCJKosVu6gSfJ0GvpLy6', 'Aaqil', 'Abdul', '17/08/1989', 'SINGAPOREAN', 'SINGAPORE', 'files/1530760092.jpg', '2018-07-05 11:08:15', 'CLEARED', 140, '0xba9d4199fab4f26efe3551d490e3821486f135ba', 0, '', ''),
+(390, 'cassandra@novum.capital', '$2y$10$.ImKJCVaOTIsw8FeGyo5DeEUnRUIcnqHdQt7Ap0mc4Rr3OmkAyPWm', 'Cassandra', 'Yeo', '25/02/1995', 'SINGAPOREAN', 'SINGAPORE', 'files/1530762884.jpg', '2018-07-05 11:54:47', 'CLEARED', 141, '0x048569486842B627CE962cF905fc010Ec79AE4b2', 0, '', ''),
+(391, 'szczepi27@op.pl', '$2y$10$v78cqzAGtwDgwQiKndZWROjiIkz.P6FiUFofaBzwuyu5b4S7LOGGq', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-07 17:54:18', '', 142, '', 0, '', ''),
+(392, 'mdshoaibati@gmail.com', '$2y$10$WlFjRnZHuiERLEkxRghU0O8wC0W9VJFAcTVdqExMHTbgnYTdTTj0i', 'Shoaib', 'Mohammad', '28031992', 'BANGLADESHI', 'BANGLADESH', 'files/1530986925.png', '2018-07-08 02:08:48', 'PENDING', 143, '0x5E86aC3d4897BFE0386829d003E3dB0cD9Da189c', 0, '', ''),
+(393, 'cm2018jon@gmail.com', '$2y$10$4X9V8v77bOYnfNet4xHdLuRyU.ExNt8StGtiOsezjc0qkJTen8u8C', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-08 17:28:42', '', 144, '', 0, '', ''),
+(394, 'becoolman100@gmail.com', '$2y$10$EiTdT/t9sJotfr8csFBp/eyKnS8G5lcga9vSASb69T6j66YSfDTTC', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-08 19:52:16', '', 145, '', 0, '', ''),
+(395, 'krishkarthick2893@gmail.com', '$2y$10$KM48HkFrxrhv0JrpVRWLluwwdJZjAGWWXR8fGdMZY1VtVUIeI61ji', NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-08 23:14:45', '', 146, '', 0, '', '');
 
 --
 -- Indexes for dumped tables
@@ -191,7 +216,7 @@ ALTER TABLE `bbn_user`
 -- AUTO_INCREMENT for table `bbn_user`
 --
 ALTER TABLE `bbn_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=371;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=396;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

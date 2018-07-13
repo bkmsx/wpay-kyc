@@ -119,23 +119,6 @@ $prevnafid = $_COOKIE["naf_id"];
     }
 /*end affiliate tracking*/
 
-  // if(!isset($_COOKIE['redirected'])){
-  //   $useragent = $_SERVER['HTTP_USER_AGENT']; 
-  //   $iPod = stripos($useragent, "iPod"); 
-  //   $iPad = stripos($useragent, "iPad"); 
-  //   $iPhone = stripos($useragent, "iPhone");
-  //   $Android = stripos($useragent, "Android"); 
-  //   $iOS = stripos($useragent, "iOS");
-
-  //   $DEVICE = ($iPod||$iPad||$iPhone||$Android||$iOS);
-  //   if ($DEVICE) {  
-  //     header("Location: https://consentium.net/kyc/");
-  //     setcookie('email', '', time() + 86400 * 365);
-  //     setcookie('redirected','true', time() + 86400 * 365);
-  //     exit;
-  //   }
-  // } 
-
   if (!isset($_COOKIE['email']) || isset($_COOKIE['email']) && $_COOKIE['email'] == "") {
     header('Location: sign-in.php');
     exit;
@@ -149,6 +132,35 @@ $prevnafid = $_COOKIE["naf_id"];
   $user_email = $_COOKIE['email'];
   $user_email = str_replace("%40", "@", $user_email);
   require_once("mysqli_connect.php");
+  
+
+  //check if file is ok
+	if(isset($_FILES['file'])) {
+		$name = $_FILES['file']['name'];
+		$tmp_name = $_FILES['file']['tmp_name'];
+		$extension = strtolower(substr($name, strlen($name) - 3));
+		$location = 'files/'.time().'.'.$extension;
+		$type = $_FILES['file']['type'];
+		$size = $_FILES['file']['size'];
+		$max_size = 4194304;
+		if (isset($name)){
+			if (!empty($name)){
+				if (($extension == 'jpg' || $extension == 'png' || $extension == 'jpeg' || $extension == 'pdf') && $size <= $max_size) {
+					
+					if (move_uploaded_file($tmp_name, $location)){
+            $update_passport = "update bbn_user set passport_location = '$location' where email='$user_email'";
+            mysqli_query($dbc, $update_passport);
+            $success = "You uploaded the passport photo successfully!";
+					} else {
+						$err = "* Problem upload image, please try with file size smaller. Thank you!";
+					}
+				} else {
+					$err = "* Please upload only jpg, jpeg, png or pdf file format. File size must be less than 4MB.";
+				}
+			}
+		} 
+  }
+  //fetch user information
   $user_sql = "select * from bbn_user where email = '$user_email'";
   $user_result = mysqli_query($dbc, $user_sql);
   $user = mysqli_fetch_array($user_result);
@@ -178,7 +190,6 @@ $prevnafid = $_COOKIE["naf_id"];
 <link href="sidemenu.css" rel="stylesheet">
 <link href="magnific-popup.css" rel="stylesheet">
 <link href="media-queries.css" rel="stylesheet">
-
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/utilities.js"></script>
 <!-- Start of consentium Zendesk Widget script -->
@@ -216,11 +227,35 @@ function purchase() {
   form = document.getElementById("form_amount");
   form.submit();
 }
+
+function changeFile(){
+    document.getElementById("submitBtn").disabled = false;
+}
+
+function uploadPassport(e){
+  e.preventDefault();
+  var form = $('#upload_form')[0];
+  var formData = new FormData(form);
+  $('.loading').show();
+  $.ajax({
+       url:  'upload-passport.php',
+       type: 'POST',
+       data: formData,
+       contentType: false,
+       cache: false,
+       processData: false,
+       success: function (result) {
+        $('#upload_photo').hide();
+        $('#success_label').show();
+        $('.loading').hide();
+       }
+});
+}
 </script>
 </head>
 
 <body>
-
+<div class="loading" hidden>Loading&#8230;</div>
 <!------------ Navigation start ------------>
 <div id="header">
   <div class="container"> <span class="logo"><a href="#home">
@@ -297,6 +332,43 @@ function purchase() {
       <br>
       <span class="small-font">If you would like to change the destination wallet, please send an email to <a href="mailto:admin@amazingappventures.ltd" class="highlight-text">admin@amazingappventures.ltd</a></span>
     </div>
+
+    
+    <!-- Upload photo -->
+    <div id="success_label" hidden> 
+      <br/><br/><br/><br/><br/>
+      <label id="" style="color:green" >You uploaded passport successfully!</label>
+    </div>
+    <div id="upload_photo" <?php if($user['passport_location'] != null) echo "hidden"; ?> >
+      <br/><br/><br/><br/><br/>
+      <div style="text-align:center;">
+        <h2 style="color:white">Identity Image</h1><div class="h-line" style="display:inline-block;"></div>
+      </div>
+      <br>
+      <label style="color:red"> <?php if(isset($err)) echo $err;?></label>
+      <form id="upload_form">
+        <div >
+          <div id="hide">
+            <label class="btn upload-btn">
+              <input type="file" name="file" onchange="changeFile()" />
+              <img src="img/icon-id.png" alt=""> &nbsp;Upload Your Passport
+            </label>
+          </div>
+        </div>
+        <br>
+        <div style="text-align: center; font-style:italic; font-size:15px; color: rgb(192, 191, 191)">You can only upload file jpg, jpeg, png or pdf and file size less than or equal 4 Mb.</div>
+        <br/>
+        <br/>
+        <br/>
+        <input type="hidden" name="email" value="<?php echo $user['email'];?>">
+      </form>
+      <div style="overflow:auto;">
+        <div style="text-align:center;">
+          <button id="submitBtn" type="button" name="submit" class="btn light-btn" onclick="uploadPassport(event)" disabled>Submit</button>
+        </div>
+        </div>
+    </div>
+    <!--  Transaction history-->
     <div style="background:#004d3f1f; height:1px; width:100%; margin:60px 0;"></div>
     <h2 style="font-weight:700;">Transaction History</h2>
     <div class="h-line" style="display:inline-block;"></div>

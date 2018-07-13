@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2018 at 02:10 PM
+-- Generation Time: Jul 09, 2018 at 10:31 AM
 -- Server version: 5.5.59-cll
 -- PHP Version: 5.6.30
 
@@ -57,7 +57,12 @@ INSERT INTO `bbn_transaction` (`transaction_id`, `user_email`, `currency`, `amou
 (125, 'x.faith.yah@gmail.com', 'USD', 1000, '0x607cFD00168F5f68E9935F0D1c47600b83C80001', 4000, 200, 0.25, 'Waiting', '2018-07-01 14:53:14'),
 (126, 'x.faith.yah@gmail.com', 'USD', 1000, '0x607cFD00168F5f68E9935F0D1c47600b83C80001', 4000, 200, 0.25, 'Waiting', '2018-07-01 15:11:13'),
 (127, '6maghor9@gmail.com', 'USD', 6250, '0x012f7dbc78480de85562a2036ca4dd1a82d25ae5', 25000, 1250, 0.25, 'Waiting', '2018-07-03 02:24:04'),
-(128, '', '', 0, '', 0, 0, 0, 'Waiting', '2018-07-03 02:24:05');
+(128, '', '', 0, '', 0, 0, 0, 'Waiting', '2018-07-03 02:24:05'),
+(129, 'cassandra@novum.capital', 'USD', 100, '0x048569486842B627CE962cF905fc010Ec79AE4b2', 400, 20, 0.25, 'Waiting', '2018-07-05 03:59:09'),
+(130, 'cassandra@novum.capital', 'ETH', 0.211586, '0x048569486842B627CE962cF905fc010Ec79AE4b2', 400, 20, 0.000528965, 'Canceled', '2018-07-05 04:02:05'),
+(131, 'cassandra@novum.capital', 'ETH', 0.211586, '0x048569486842B627CE962cF905fc010Ec79AE4b2', 400, 20, 0.000528965, 'Canceled', '2018-07-05 04:04:54'),
+(132, 'gsubtil@ziggity.com', 'ETH', 2.08077, '0x3873bb2e435821c9c2c9cba8d7799f712bd1a1d7', 4000, 200, 0.000520193, 'Canceled', '2018-07-05 10:41:45'),
+(133, 'gsubtil@ziggity.com', 'ETH', 2.10619, '0x3873bb2e435821c9c2c9cba8d7799f712bd1a1d7', 4000, 200, 0.000526546, 'Canceled', '2018-07-05 14:55:15');
 
 --
 -- Indexes for dumped tables
@@ -77,7 +82,7 @@ ALTER TABLE `bbn_transaction`
 -- AUTO_INCREMENT for table `bbn_transaction`
 --
 ALTER TABLE `bbn_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

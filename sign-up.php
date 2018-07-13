@@ -131,9 +131,9 @@ if (isset($_POST['submit'])) {
       <h1 style="color:white">Sign Up</h1>
       <div class="h-line h-line-small" style="display:inline-block; background-color:white"></div>
       <form action="sign-up.php" method="post">
-        <label id="error2" style="margin-top:10px; margin-bottom:10px; color:red;"><?php if($err) echo $err;?></label>
+        <label id="error2" style="margin-top:10px; margin-bottom:10px; color:red;"><?php if(isset($err)) echo $err;?></label>
         <div class="clearfix">
-          <input type='email' name="email" class="input-style" placeholder="Email Address" value="<?php if($email) echo $email; ?>" required />
+          <input type='email' name="email" class="input-style" placeholder="Email Address" value="<?php if(isset($email)) echo $email; ?>" required />
         </div>
         <div class="clearfix">
           <input type='password' name="password" class="input-style" placeholder="Password" style="width: 100%; height: 58px; border:none" required />

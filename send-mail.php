@@ -8,8 +8,8 @@ require 'PHPMailer/SMTP.php';
 
 // testMail("coco@novum.capital", "Coco");
 // testMail("shauntan3@gmail.com", "Shauntan");
-testUserWithoutTransaction("tien@novum.capital", "Tien");
-testUserWithoutTransaction("coco@novum.capital", "Coco");
+// testUserWithoutTransaction("tien@novum.capital", "Tien");
+// testUserWithoutTransaction("coco@novum.capital", "Coco");
 
 function testUserWithoutTransaction($test_mail, $test_name) {
 	sendMail($test_mail, getUserWithoutTransactionTitle(), getUserWithoutTransactionMessage($test_name));

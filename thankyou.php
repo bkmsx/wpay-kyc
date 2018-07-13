@@ -6,8 +6,8 @@
   $user_email = $_COOKIE['email'];
   $user_email = str_replace("%40", "@", $user_email);
   $token_bonus = 0;
-  if ($last_date <= '2018-07-03 00:00:00'){
-    $token_bonus = floor($_POST['consentium_amount'] * 0.05);
+  if ($time >= '2018-07-03 00:00:00'){
+    $token_bonus = floor($_POST['consentium_amount'] * 0.07);
   }
   $update_history_sql = "insert into bbn_transaction (user_email, currency, amount, address, 
   consentium_amount, consentium_bonus, status, date, conversion_rate) values ('"
