@@ -14,7 +14,7 @@
 					
 					if (move_uploaded_file($tmp_name, $location)){
                         require_once('mysqli_connect.php');
-                        $update_passport = "update bbn_user set passport_location = '$location' where email='".$_POST['email']."'";
+                        $update_passport = "update users set passport_location = '$location' where email='".$_POST['email']."'";
                         mysqli_query($dbc, $update_passport);
                         $success = "You uploaded the passport photo successfully!";
 					} else {

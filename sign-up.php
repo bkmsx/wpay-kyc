@@ -23,13 +23,13 @@ if (isset($_POST['submit'])) {
 	}
 	else {
 		require_once('mysqli_connect.php');
-		$query = "select * from bbn_user where email = '$email'";
+		$query = "select * from users where email = '$email'";
 		$result = @mysqli_query($dbc, $query);
 		if (mysqli_num_rows($result) > 0){
 			$err = "* Email already exists";
 		} else {
 			$encrypt_pass = password_hash($password, PASSWORD_BCRYPT);
-			$sql_count_row = "select count(user_id) as row_count from bbn_user";
+			$sql_count_row = "select count(user_id) as row_count from users";
 			$row_count = mysqli_fetch_array(mysqli_query($dbc, $sql_count_row));
 			$row_number = $row_count['row_count'] + 2;
             /*Inserted for affiliate tracking*/
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
             if($_COOKIE["click_id"])
                 $click_id = $_COOKIE["click_id"];
             /*End insert for affiliate tracking*/
-			$sql_update = "insert into bbn_user (email, password, date, row_number, utm_source, click_id) values 
+			$sql_update = "insert into users (email, password, date, row_number, utm_source, click_id) values 
 			('$email', '$encrypt_pass', now(), '$row_number', '$utm_source', '$click_id')";
 			if (mysqli_query($dbc, $sql_update)) {
 				setcookie("email", $email, time() + 86400 * 365);

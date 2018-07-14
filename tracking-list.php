@@ -34,7 +34,7 @@
 	</tr>
 <?php
 require_once('mysqli_connect.php');
-$sql = "select * from bbn_user";
+$sql = "select * from users";
 $result = mysqli_query($dbc, $sql);
 $id = 0;
 while ($user = mysqli_fetch_array($result)) {

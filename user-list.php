@@ -29,7 +29,7 @@
 		<th>#</th>
 		<th>Email</th>
 		<th>Name</th>
-		<th>Coin number</th>
+		<th>Token number</th>
 		<th>Date of birth</th>
 		<th>Citizenship</th>
 		<th>TimeStamp</th>
@@ -38,7 +38,7 @@
 	</tr>
 <?php
 require_once('mysqli_connect.php');
-$sql = "select * from bbn_user";
+$sql = "select * from users";
 $result = mysqli_query($dbc, $sql);
 $id = 0;
 while ($user = mysqli_fetch_array($result)) {
@@ -47,7 +47,7 @@ while ($user = mysqli_fetch_array($result)) {
 	echo "<td>".$id."</td>";
 	echo "<td><a href='javascript: showUserDetail(\"".$user['email']."\")' class='highlight-text'>".$user['email']."</a></td>";
 	echo "<td>".$user['first_name']." ".$user['last_name']."</td>";
-	echo "<td>".$user['coin_number']."</td>";
+	echo "<td>".$user['token_number']."</td>";
 	echo "<td>".$user['date_birth']."</td>";
 	echo "<td>".$user['citizenship']."</td>";
 	echo "<td>".$user['date']."</td>";

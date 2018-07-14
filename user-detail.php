@@ -2,20 +2,20 @@
 require_once('mysqli_connect.php');
 require_once('send-mail.php');
 if (isset($_POST['first_name'])){
-	$sql = "update bbn_user set first_name='"
+	$sql = "update users set first_name='"
 	.$_POST['first_name']."', last_name='"
 	.$_POST['last_name']."',date_birth='"
 	.$_POST['date_birth']."', citizenship='"
 	.$_POST['citizenship']."', country='"
-	.$_POST['country']."', erc20_address='"
-	.$_POST['erc20_address']."', status='"
+	.$_POST['country']."', wallet_address='"
+	.$_POST['wallet_address']."', status='"
 	.$_POST['status']."' where email='".$_POST['email']."'";
 	$result = mysqli_query($dbc, $sql);
 	if ($_POST['status'] == "CLEARED") {
-		sendMail($_POST['email'], getSuccessKycTitle(), getSuccessKycMessage($_POST['last_name'], $_COOKIE['erc20_address']));
+		sendMail($_POST['email'], getSuccessKycTitle(), getSuccessKycMessage($_POST['last_name'], $_COOKIE['wallet_address']));
 	}
 }
-$sql = "select * from bbn_user where email='".$_POST['email']."'";
+$sql = "select * from users where email='".$_POST['email']."'";
 $result = mysqli_query($dbc, $sql);
 $user = mysqli_fetch_array($result);
 ?>
@@ -69,8 +69,8 @@ $user = mysqli_fetch_array($result);
 		<input type="text" name="country" value="<?php echo $user['country'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
-		Erc20 wallet address:<br/>
-		<input type="text" name="erc20_address" value="<?php echo $user['erc20_address'] ?>" readonly>
+		Wallet address:<br/>
+		<input type="text" name="wallet_address" value="<?php echo $user['wallet_address'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
 		Status:<br/>
@@ -98,13 +98,13 @@ $user = mysqli_fetch_array($result);
           <th>CURRENCY</th>
           <th>AMOUNT</th>
           <th>ADDRESS</th>
-          <th>CONSENTIUM AMOUNT</th>
-          <th>CONSENTIUM BONUS</th>
+          <th>TOKEN AMOUNT</th>
+          <th>TOKEN BONUS</th>
           <th>CONVERSION RATE</th>
           <th>STATUS</th>
         </tr>
 		<?php 
-		  $transaction_history_sql = "select * from bbn_transaction where user_email = '".$user['email']."'
+		  $transaction_history_sql = "select * from transactions where user_email = '".$user['email']."'
 		   order by date desc";
 		  $result = mysqli_query($dbc, $transaction_history_sql);
 		  while ($transaction = mysqli_fetch_array($result)){
@@ -113,8 +113,8 @@ $user = mysqli_fetch_array($result);
 		    echo "<td>".$transaction['currency']."</td>";
 		    echo "<td>".$transaction['amount']."</td>";
 		    echo "<td>".$transaction['address']."</td>";
-		    echo "<td>".$transaction['consentium_amount']."</td>";
-		    echo "<td>".$transaction['consentium_bonus']."</td>";
+		    echo "<td>".$transaction['token_amount']."</td>";
+		    echo "<td>".$transaction['token_bonus']."</td>";
 		    echo "<td>".$transaction['conversion_rate']."</td>";
 		    echo "<td><a href='#' onclick='showTransactionDetail(\"".$transaction['transaction_id']."\")'>".$transaction['status']."</a></td>";
 		    echo "</tr>";

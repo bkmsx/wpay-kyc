@@ -59,14 +59,14 @@ function showTransactionDetail(transaction_id){
       <th>CURRENCY</th>
       <th>AMOUNT</th>
       <th>ADDRESS</th>
-      <th>CONSENTIUM AMOUNT</th>
-      <th>CONSENTIUM BONUS</th>
+      <th>TOKEN AMOUNT</th>
+      <th>TOKEN BONUS</th>
       <th>CONVERSION RATE</th>
       <th>STATUS</th>
     </tr>
 	<?php 
 	  require_once('mysqli_connect.php');	
-	  $transaction_history_sql = "select * from bbn_transaction order by date desc";
+	  $transaction_history_sql = "select * from transactions order by date desc";
 	  $result = mysqli_query($dbc, $transaction_history_sql);
 	  $index = 1;
 	  while ($transaction = mysqli_fetch_array($result)){
@@ -77,8 +77,8 @@ function showTransactionDetail(transaction_id){
 	    echo "<td>".$transaction['currency']."</td>";
 	    echo "<td>".$transaction['amount']."</td>";
 	    echo "<td>".$transaction['address']."</td>";
-	    echo "<td>".$transaction['consentium_amount']."</td>";
-	    echo "<td>".$transaction['consentium_bonus']."</td>";
+	    echo "<td>".$transaction['token_amount']."</td>";
+	    echo "<td>".$transaction['token_bonus']."</td>";
 	    echo "<td>".$transaction['conversion_rate']."</td>";
 	    echo "<td><a href='#' class='highlight-text' onclick='showTransactionDetail(\"".$transaction['transaction_id']."\")'>".$transaction['status']."</a></td>";
 		echo "</tr>";

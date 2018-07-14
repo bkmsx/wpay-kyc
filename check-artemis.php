@@ -1,7 +1,7 @@
 <?php
 require_once('request_api.php');
 require_once('mysqli_connect.php');
-$sql_pending_user = "select * from bbn_user where status='PENDING'";
+$sql_pending_user = "select * from users where status='PENDING'";
 $result = mysqli_query($dbc, $sql_pending_user);
 $url = "https://p3.cynopsis.co/artemis_novumcapital/default/individual_risk";
 $header = ['Content-Type: application/json', 'WEB2PY-USER-TOKEN:03a7a6cb-63b2-47b2-8715-af65aabf28ed'];

@@ -7,15 +7,15 @@
   $user_email = str_replace("%40", "@", $user_email);
   $token_bonus = 0;
   if ($time >= '2018-07-03 00:00:00'){
-    $token_bonus = floor($_POST['consentium_amount'] * 0.07);
+    $token_bonus = floor($_POST['token_amount'] * 0.07);
   }
-  $update_history_sql = "insert into bbn_transaction (user_email, currency, amount, address, 
-  consentium_amount, consentium_bonus, status, date, conversion_rate) values ('"
+  $update_history_sql = "insert into transactions (user_email, currency, amount, address, 
+  token_amount, token_bonus, status, date, conversion_rate) values ('"
   .$user_email."','"
   .$_POST['currency']."','"
   .$_POST['amount']."','"
   .$_POST['address']."','"
-  .$_POST['consentium_amount']."', ".$token_bonus.", 'Waiting', '$time','"
+  .$_POST['token_amount']."', ".$token_bonus.", 'Waiting', '$time','"
   .$_POST['conversion_rate']."')";
   if ($_POST['currency'] == "USD") {
     sendMail($user_email, getUsdTransactionDetailTitle(), getUsdTransactionDetailMessage($user_email, $_POST['amount']));
@@ -53,9 +53,9 @@ mysqli_close($dbc);
 
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/utilities.js"></script>
-<!-- Start of consentium Zendesk Widget script -->
+<!-- Start of token Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
-<!-- End of consentium Zendesk Widget script -->
+<!-- End of token Zendesk Widget script -->
 
 <!-- Add sidemenu -->
 <script>

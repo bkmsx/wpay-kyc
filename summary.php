@@ -26,9 +26,9 @@
 
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/utilities.js"></script>
-<!-- Start of consentium Zendesk Widget script -->
+<!-- Start of token Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
-<!-- End of consentium Zendesk Widget script -->
+<!-- End of token Zendesk Widget script -->
 
 <!-- Add sidemenu -->
 <script>
@@ -124,7 +124,7 @@ function submitForm(){
       <br>
       <br>
       <h2>You will Receive:</h2>
-      <h2 style="color:#EA7C70;"><?php echo $_POST['consentium_amount'] ?> Eminent Tokens</h2>
+      <h2 style="color:#EA7C70;"><?php echo $_POST['token_amount'] ?> Eminent Tokens</h2>
       <br>
       <br>
       <p style="color:#fff;">You will receive a confirmation email once the transaction is validated (this may take up to a few hours). We may email you with a request for KYC documents. If we do not receive your documentation, your funds will be returned to your wallet.</p>
@@ -135,7 +135,7 @@ function submitForm(){
 
       <form action="thankyou.php" method="POST" id="form_summary">
         <input type="hidden" name="address" value="<?php echo $_POST['address'] ?>">
-        <input type="hidden" name="consentium_amount" value="<?php echo $_POST['consentium_amount'] ?>">
+        <input type="hidden" name="token_amount" value="<?php echo $_POST['token_amount'] ?>">
         <input type="hidden" name="amount" value="<?php echo $_POST['amount'] ?>">
         <input type="hidden" name="currency" value="<?php echo $_POST['currency'] ?>">
         <input type="hidden" name="conversion_rate" value="<?php echo $_POST['conversion_rate'] ?>">

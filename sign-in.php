@@ -4,14 +4,14 @@ if(isset($_POST['submit'])) {
 	$password = $_POST['password'];
 	if (!empty($email) && !empty($password)){
 		require_once('mysqli_connect.php');
-		$query = "select * from bbn_user where email = '$email'";
+		$query = "select * from users where email = '$email'";
 		$result = mysqli_query($dbc, $query);
 		if (mysqli_num_rows($result) > 0){
 			$user = mysqli_fetch_array($result);
 			if (password_verify($password, $user['password'])){
 				setcookie("email", $email, time() + 86400 * 365);
-				if (!empty($user['erc20_address'])){
-					setcookie("erc20_address", $user['erc20_address'], time() + 86400 * 365);
+				if (!empty($user['wallet_address'])){
+					setcookie("wallet_address", $user['wallet_address'], time() + 86400 * 365);
 					setcookie("last_name", $user['last_name'], time() + 86400 * 365);
 					setcookie("kyc_done", "true", time() + 86400 * 365);
 				}

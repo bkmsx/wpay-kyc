@@ -1,122 +1,122 @@
 <?php
 /*affiliate id tracking*/
 /*parse url and get the last entry in the url*/
-if($_GET["utm_source"] && $_GET["click_id"])
-    {
-    setcookie("utm_source", $_GET["utm_source"], time()+(3600*24*999), "/", ".beepbeepnation.com");
-    setcookie("click_id", $_GET["click_id"], time()+(3600*24*999), "/", ".beepbeepnation.com");
-    }
+// if($_GET["utm_source"] && $_GET["click_id"])
+//     {
+//     setcookie("utm_source", $_GET["utm_source"], time()+(3600*24*999), "/", ".beepbeepnation.com");
+//     setcookie("click_id", $_GET["click_id"], time()+(3600*24*999), "/", ".beepbeepnation.com");
+//     }
     
-$nurl = rtrim($_SERVER['REQUEST_URI'], '/');
-$lastchar = substr( $nurl, strrpos( $nurl, '/' )+1 );
-if($lastchar == 'x')
-    {
-    unset($_COOKIE["af_id"]);
-    $url = parse_url($_SERVER['REQUEST_URI']);
-    setcookie("af_id", "X", time()-(3600*24), "/", ".beepbeepnation.com");
-    $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
-    $nurl = rtrim($nurl, "x");
-    header("location: $nurl");
-    exit();
-    }
-else
-    {
-    $url = parse_url($_SERVER['REQUEST_URI']);
-    if($url["path"] != NULL)
-        {
-        $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
-        $url = explode("/", $nurl);
-        if(is_array($url))
-            {
-            $afid = $url[count($url)-1];
-            if($afid)
-                {
-                if(preg_match("/^x[a-z0-9]/", $afid))
-                    {
-                $dbhost = "localhost";
-                $dbuser = "makeacha_root";
-                $dbpass = "@q1w2e3r4@";
-                $dbname = "makeacha_lcxapp";
-                $connection = mysql_connect($dbhost,$dbuser,$dbpass)
-                    or die ("Couldn't connect to server");
-                $db = mysql_select_db($dbname)
-                    or die ("Couldn't select database");
+// $nurl = rtrim($_SERVER['REQUEST_URI'], '/');
+// $lastchar = substr( $nurl, strrpos( $nurl, '/' )+1 );
+// if($lastchar == 'x')
+//     {
+//     unset($_COOKIE["af_id"]);
+//     $url = parse_url($_SERVER['REQUEST_URI']);
+//     setcookie("af_id", "X", time()-(3600*24), "/", ".beepbeepnation.com");
+//     $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
+//     $nurl = rtrim($nurl, "x");
+//     header("location: $nurl");
+//     exit();
+//     }
+// else
+//     {
+//     $url = parse_url($_SERVER['REQUEST_URI']);
+//     if($url["path"] != NULL)
+//         {
+//         $nurl = strtolower(rtrim(str_replace("%2F", "/", $url["path"]), "/"));
+//         $url = explode("/", $nurl);
+//         if(is_array($url))
+//             {
+//             $afid = $url[count($url)-1];
+//             if($afid)
+//                 {
+//                 if(preg_match("/^x[a-z0-9]/", $afid))
+//                     {
+//                 $dbhost = "localhost";
+//                 $dbuser = "makeacha_root";
+//                 $dbpass = "@q1w2e3r4@";
+//                 $dbname = "makeacha_lcxapp";
+//                 $connection = mysql_connect($dbhost,$dbuser,$dbpass)
+//                     or die ("Couldn't connect to server");
+//                 $db = mysql_select_db($dbname)
+//                     or die ("Couldn't select database");
                     
-                $result = mysql_query("SELECT * FROM link_exceptions WHERE link_exception_text = '$afid'");
-                if(mysql_num_rows($result) == 0)
-                    {
-                        $afid = strtolower($afid);
-                        $afid = ltrim($afid, "x");
-                        $nurl = rtrim($nurl, "x$afid");
+//                 $result = mysql_query("SELECT * FROM link_exceptions WHERE link_exception_text = '$afid'");
+//                 if(mysql_num_rows($result) == 0)
+//                     {
+//                         $afid = strtolower($afid);
+//                         $afid = ltrim($afid, "x");
+//                         $nurl = rtrim($nurl, "x$afid");
                         
-                        $aftype = 0;
-                        $result = mysql_query("SELECT * FROM xperiences_affiliates WHERE affiliate_number='$afid'");
-                        if($row=mysql_fetch_array($result))
-                            {
-                            $afid=$row["affiliate_number"];
-                            $affiliate_id=$row["affiliate_id"];
-                            $aftype=$row["affiliate_type"];
+//                         $aftype = 0;
+//                         $result = mysql_query("SELECT * FROM xperiences_affiliates WHERE affiliate_number='$afid'");
+//                         if($row=mysql_fetch_array($result))
+//                             {
+//                             $afid=$row["affiliate_number"];
+//                             $affiliate_id=$row["affiliate_id"];
+//                             $aftype=$row["affiliate_type"];
                             
-                            $ipaddress = '';
-                            if (getenv('HTTP_CLIENT_IP'))
-                                $ipaddress = getenv('HTTP_CLIENT_IP');
-                            else if(getenv('HTTP_X_FORWARDED_FOR'))
-                                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-                            else if(getenv('HTTP_X_FORWARDED'))
-                                $ipaddress = getenv('HTTP_X_FORWARDED');
-                            else if(getenv('HTTP_FORWARDED_FOR'))
-                                $ipaddress = getenv('HTTP_FORWARDED_FOR');
-                            else if(getenv('HTTP_FORWARDED'))
-                                $ipaddress = getenv('HTTP_FORWARDED');
-                            else if(getenv('REMOTE_ADDR'))
-                                $ipaddress = getenv('REMOTE_ADDR');
-                            else
-                                $ipaddress = 'UNKNOWN';
+//                             $ipaddress = '';
+//                             if (getenv('HTTP_CLIENT_IP'))
+//                                 $ipaddress = getenv('HTTP_CLIENT_IP');
+//                             else if(getenv('HTTP_X_FORWARDED_FOR'))
+//                                 $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+//                             else if(getenv('HTTP_X_FORWARDED'))
+//                                 $ipaddress = getenv('HTTP_X_FORWARDED');
+//                             else if(getenv('HTTP_FORWARDED_FOR'))
+//                                 $ipaddress = getenv('HTTP_FORWARDED_FOR');
+//                             else if(getenv('HTTP_FORWARDED'))
+//                                 $ipaddress = getenv('HTTP_FORWARDED');
+//                             else if(getenv('REMOTE_ADDR'))
+//                                 $ipaddress = getenv('REMOTE_ADDR');
+//                             else
+//                                 $ipaddress = 'UNKNOWN';
                                 
-                            $datetoday = date("Y-m-d");
-                            $result = mysql_query("SELECT * FROM affiliate_clicks WHERE click_date='$datetoday' AND user_ip='$ipaddress' AND server_uri='$nurl' AND affiliate_id=$affiliate_id AND server_source='beepbeepnation.com'");
-                            if(mysql_num_rows($result) == 0)
-                                $result = mysql_query("INSERT INTO affiliate_clicks (click_date, user_ip, server_uri, affiliate_id, server_source) VALUES ('$datetoday', '$ipaddress', '$nurl', '$affiliate_id', 'beepbeepnation.com')");
-                            }
-                        else
-                            $afid=0;
-                        $prevafid="";
-                        $prevnafid="";
-                        if($_COOKIE["af_id"])
-                            $prevafid = $_COOKIE["af_id"];
-                        if($_COOKIE["naf_id"])
-$prevnafid = $_COOKIE["naf_id"];
+//                             $datetoday = date("Y-m-d");
+//                             $result = mysql_query("SELECT * FROM affiliate_clicks WHERE click_date='$datetoday' AND user_ip='$ipaddress' AND server_uri='$nurl' AND affiliate_id=$affiliate_id AND server_source='beepbeepnation.com'");
+//                             if(mysql_num_rows($result) == 0)
+//                                 $result = mysql_query("INSERT INTO affiliate_clicks (click_date, user_ip, server_uri, affiliate_id, server_source) VALUES ('$datetoday', '$ipaddress', '$nurl', '$affiliate_id', 'beepbeepnation.com')");
+//                             }
+//                         else
+//                             $afid=0;
+//                         $prevafid="";
+//                         $prevnafid="";
+//                         if($_COOKIE["af_id"])
+//                             $prevafid = $_COOKIE["af_id"];
+//                         if($_COOKIE["naf_id"])
+// $prevnafid = $_COOKIE["naf_id"];
                             
-                        if($aftype==0)
-                            {
-                            if($prevafid != "" && $prevafid != $afid)
-                                setcookie("af_id2", $prevafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("af_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            }
-                        elseif($aftype==1)
-                            {
-                            if($prevnafid != "" && $prevnafid != $afid)
-                                setcookie("naf_id2", $prevnafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("naf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
-                            }
+//                         if($aftype==0)
+//                             {
+//                             if($prevafid != "" && $prevafid != $afid)
+//                                 setcookie("af_id2", $prevafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("af_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             }
+//                         elseif($aftype==1)
+//                             {
+//                             if($prevnafid != "" && $prevnafid != $afid)
+//                                 setcookie("naf_id2", $prevnafid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("naf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("laf_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("utm_source", "bbn", time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             setcookie("click_id", $afid, time()+(3600*24*999), "/", ".beepbeepnation.com");
+//                             }
                             
                             
-                        mysql_close();
+//                         mysql_close();
                         
-                        header("location: $nurl");
-                        exit();    
-                        }
-                    }
-                }
-            }
-        }
-    }
+//                         header("location: $nurl");
+//                         exit();    
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
 /*end affiliate tracking*/
 
   if (!isset($_COOKIE['email']) || isset($_COOKIE['email']) && $_COOKIE['email'] == "") {
@@ -133,35 +133,8 @@ $prevnafid = $_COOKIE["naf_id"];
   $user_email = str_replace("%40", "@", $user_email);
   require_once("mysqli_connect.php");
   
-
-  //check if file is ok
-	if(isset($_FILES['file'])) {
-		$name = $_FILES['file']['name'];
-		$tmp_name = $_FILES['file']['tmp_name'];
-		$extension = strtolower(substr($name, strlen($name) - 3));
-		$location = 'files/'.time().'.'.$extension;
-		$type = $_FILES['file']['type'];
-		$size = $_FILES['file']['size'];
-		$max_size = 4194304;
-		if (isset($name)){
-			if (!empty($name)){
-				if (($extension == 'jpg' || $extension == 'png' || $extension == 'jpeg' || $extension == 'pdf') && $size <= $max_size) {
-					
-					if (move_uploaded_file($tmp_name, $location)){
-            $update_passport = "update bbn_user set passport_location = '$location' where email='$user_email'";
-            mysqli_query($dbc, $update_passport);
-            $success = "You uploaded the passport photo successfully!";
-					} else {
-						$err = "* Problem upload image, please try with file size smaller. Thank you!";
-					}
-				} else {
-					$err = "* Please upload only jpg, jpeg, png or pdf file format. File size must be less than 4MB.";
-				}
-			}
-		} 
-  }
   //fetch user information
-  $user_sql = "select * from bbn_user where email = '$user_email'";
+  $user_sql = "select * from users where email = '$user_email'";
   $user_result = mysqli_query($dbc, $user_sql);
   $user = mysqli_fetch_array($user_result);
 ?>
@@ -192,9 +165,9 @@ $prevnafid = $_COOKIE["naf_id"];
 <link href="media-queries.css" rel="stylesheet">
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/utilities.js"></script>
-<!-- Start of consentium Zendesk Widget script -->
+<!-- Start of token Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
-<!-- End of consentium Zendesk Widget script -->
+<!-- End of token Zendesk Widget script -->
 
 <!-- Add sidemenu -->
 <script>
@@ -245,6 +218,7 @@ function uploadPassport(e){
        cache: false,
        processData: false,
        success: function (result) {
+         console.log(result);
         $('#upload_photo').hide();
         $('#success_label').show();
         $('.loading').hide();
@@ -274,7 +248,6 @@ function uploadPassport(e){
 </div>
 <!------------ Navigation end ------------>
 
-
 <div class="setting-banner" style="text-align:center;">
   <div class="container">
     <h1>Dashboard</h1>
@@ -292,7 +265,7 @@ function uploadPassport(e){
         <form action="payment.php" method="POST" id="form_amount">
           
           <div class="col-md-12 col-sm-12 v-pad">
-            <!-- <input type="number" name="consentium_amount" value="400" min="400" id="consentium_amount"> -->
+            <!-- <input type="number" name="token_amount" value="400" min="400" id="token_amount"> -->
             <table  class="table-head">
             <tr valign="center">
               <th>Price (in USD)</th>
@@ -318,7 +291,7 @@ function uploadPassport(e){
             <p>Your Wallet Address:</p>
           </div>
           <div class="col-md-9 col-sm-9 v-pad">
-            <input type="text" name="address" class="input-style wallet-address" value="<?php echo $_COOKIE['erc20_address'] ?>" id="myInput" readonly>
+            <input type="text" name="address" class="input-style wallet-address" value="<?php echo $_COOKIE['wallet_address'] ?>" id="myInput" readonly>
             <button onclick="myFunction()" class="btn-copy"><i class="fa fa-copy" aria-hidden="true"></i></button>
             <div style="clear:both;"></div>
           </div>
@@ -380,23 +353,23 @@ function uploadPassport(e){
               <th>DATE</th>
               <th>CURRENCY</th>
               <th>AMOUNT</th>
-              <th>EMN AMOUNT</th>
-              <th>EMN BONUS</th>
-              <th>Total EMN</th>
+              <th>WGP AMOUNT</th>
+              <th>WGP BONUS</th>
+              <th>Total WGP</th>
               <th>CONVERSION RATE</th>
               <th>STATUS</th>
             </tr>
           <?php 
-            $transaction_history_sql = "select * from bbn_transaction where user_email = '$user_email' order by date desc";
+            $transaction_history_sql = "select * from transactions where user_email = '$user_email' order by date desc";
             $result = mysqli_query($dbc, $transaction_history_sql);
             while ($transaction = mysqli_fetch_array($result)){
               echo "<tr>";
               echo "<td>".$transaction['date']."</td>";
               echo "<td>".$transaction['currency']."</td>";
               echo "<td>".$transaction['amount']."</td>";
-              echo "<td>".$transaction['consentium_amount']."</td>";
-              echo "<td>".$transaction['consentium_bonus']."</td>";
-              echo "<td>".$user['coin_number']."</td>";
+              echo "<td>".$transaction['token_amount']."</td>";
+              echo "<td>".$transaction['token_bonus']."</td>";
+              echo "<td>".$user['token_number']."</td>";
               echo "<td>".$transaction['conversion_rate']."</td>";
               echo "<td>".$transaction['status']."</td>";
               echo "</tr>";

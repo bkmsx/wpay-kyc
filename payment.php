@@ -1,9 +1,15 @@
 <?php
 require_once('request_api.php');
-$url = "https://api.coinmarketcap.com/v1/ticker/ethereum/";
+$url = "https://api.coinmarketcap.com/v2/ticker/512/?convert=BTC";
 $result_json = callAPI("GET", $url);
-$result_object = json_decode($result_json);
-$ethereum_price = $result_object[0]->price_usd;
+$result = json_decode($result_json);
+$btc_price = $result->data->quotes->BTC->price;
+
+$url = "https://api.coinmarketcap.com/v2/ticker/512/?convert=ETH";
+$result_json = callAPI("GET", $url);
+$result = json_decode($result_json);
+$eth_price = $result->data->quotes->ETH->price;
+$usd_price = $result->data->quotes->USD->price;
 ?>
 <!doctype html>
 <html>
@@ -33,9 +39,9 @@ $ethereum_price = $result_object[0]->price_usd;
 
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/utilities.js"></script>
-<!-- Start of consentium Zendesk Widget script -->
+<!-- Start of token Zendesk Widget script -->
 <script>/*<![CDATA[*/window.zE||(function(e,t,s){var n=window.zE=window.zEmbed=function(){n._.push(arguments)}, a=n.s=e.createElement(t),r=e.getElementsByTagName(t)[0];n.set=function(e){ n.set._.push(e)},n._=[],n.set._=[],a.async=true,a.setAttribute("charset","utf-8"), a.src="https://static.zdassets.com/ekr/asset_composer.js?key="+s, n.t=+new Date,a.type="text/javascript",r.parentNode.insertBefore(a,r)})(document,"script","aace7492-2999-420e-89fd-ec853f818169");/*]]>*/</script>
-<!-- End of consentium Zendesk Widget script -->
+<!-- End of token Zendesk Widget script -->
 
 <!-- Add sidemenu -->
 <script>
@@ -64,24 +70,30 @@ function getCookie(key) {
   var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
   return keyValue ? keyValue[2] : null;
 }
-
+var btc_price = <?php echo ($btc_price) ?>;
+var eth_price = <?php echo ($eth_price) ?>;
+var usd_price = <?php echo ($usd_price) ?>;
+var token_price = 10;
 function countPayment(){
-  var ethereum_price = "<?php Print($ethereum_price) ?>"
-  token_input = document.getElementById("consentium_amount");
-  amount_input = document.getElementById("amount");
-  eth_checkbox = document.getElementById("eth");
-  conversion_rate = document.getElementById("conversion_rate");
-  if (eth_checkbox.checked) {
-    amount_input.value = token_input.value * 0.25 / ethereum_price;
-    conversion_rate.value = 0.25 / ethereum_price;
+  console.log(btc_price);
+  $('#conversion_rate').val(20);
+  if ($('#xlm').is(':checked')) {
+    $('#amount').val($('#token_amount').val() * token_price);
+    $('#conversion_rate').val(token_price);
+  } else if ($('#btc').is(':checked')) {
+    $('#amount').val($('#token_amount').val() * token_price * btc_price);
+    $('#conversion_rate').val(token_price * btc_price);
+  } else if ($('#eth').is(':checked')) {
+    $('#amount').val($('#token_amount').val() * token_price * eth_price);
+    $('#conversion_rate').val(token_price * eth_price);
   } else {
-    amount_input.value = token_input.value * 0.25;
-    conversion_rate.value = 0.25;
-  }  
+    $('#amount').val($('#token_amount').val() * token_price * usd_price);
+    $('#conversion_rate').val(token_price * usd_price);
+  }
 }
 
 function submitSummary(){
-  var amount = $('#consentium_amount').val();
+  var amount = $('#token_amount').val();
   if( amount < 400) {
     $('#error').html('* Minimum Purchase Amount Is 400 Tokens');
   } else {
@@ -128,11 +140,11 @@ function submitSummary(){
       <div class="row">
         <div id="error" style="color:red"></div>
         <div class="col-md-4 col-sm-4 v-pad purchase-text">
-          <p>Eminent Token Amount:</p>
+          <p>WGP Token Amount:</p>
         </div>
         <form action="summary.php" method="POST" id="form_payment">
           <div class="col-md-8 col-sm-8 v-pad">
-            <input id="consentium_amount" name="consentium_amount" type="number" class="input-style" oninput="countPayment()" value="4000">
+            <input id="token_amount" name="token_amount" type="number" class="input-style" oninput="countPayment()" value="4000">
           </div>
           <div class="col-md-4 col-sm-4 v-pad purchase-text">
             <p>Wallet Authorization:</p>
@@ -146,14 +158,16 @@ function submitSummary(){
             <p>Payment Method:</p>
           </div>
           <div class="col-md-8 col-sm-8 v-pad radio-payment">
+            <input id="xlm" type="radio" name="currency" value="XLM" onclick="countPayment()" checked="checked"> &nbsp;&nbsp;XLM<br><br>
+            <input id="btc" type="radio" name="currency" value="BTC" onclick="countPayment()"> &nbsp;&nbsp;BTC<br><br>
             <input id="eth" type="radio" name="currency" value="ETH" onclick="countPayment()"> &nbsp;&nbsp;ETH<br><br>
-            <input type="radio" name="currency" value="USD" checked="checked" onclick="countPayment()"> &nbsp;&nbsp;USD
+            <input type="radio" name="currency" value="USD" onclick="countPayment()"> &nbsp;&nbsp;USD
           </div>
           <div class="col-md-4 col-sm-4 v-pad purchase-text">
             <p>Payment Amount:</p>
           </div>
           <div class="col-md-8 col-sm-8 v-pad">
-            <input id="amount" name="amount" type="text" class="input-style" value="<?php echo $amount * 0.25 ?>">
+            <input id="amount" name="amount" type="text" class="input-style" readonly> 
           </div>
           <input type="hidden" id="conversion_rate" name="conversion_rate" value="<?php echo 0.25 ?>">
         </form>

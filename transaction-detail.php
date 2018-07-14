@@ -2,12 +2,12 @@
 	require_once('mysqli_connect.php');
 	require_once('send-mail.php');
 	if(isset($_POST['currency'])) {
-		$update_sql = "update bbn_transaction set currency='"
+		$update_sql = "update transactions set currency='"
 		.$_POST['currency']."', amount='"
 		.$_POST['amount']."', address='"
-		.$_POST['address']."', consentium_amount='"
-		.$_POST['consentium_amount']."', consentium_bonus='"
-		.$_POST['consentium_bonus']."', conversion_rate='"
+		.$_POST['address']."', token_amount='"
+		.$_POST['token_amount']."', token_bonus='"
+		.$_POST['token_bonus']."', conversion_rate='"
 		.$_POST['conversion_rate']."', status='"
 		.$_POST['status']."', date='"
 		.$_POST['date']."' where transaction_id='"
@@ -15,17 +15,17 @@
 		mysqli_query($dbc, $update_sql);
 		
 		if ($_POST['status'] == "Confirmed") {
-			$user_sql = "select * from bbn_user where email='".$_POST['user_email']."'";
+			$user_sql = "select * from users where email='".$_POST['user_email']."'";
 			$user_result = mysqli_query($dbc, $user_sql);
 			$user = mysqli_fetch_array($user_result);
-			$coin_number = $user['coin_number'] + $_POST['consentium_amount'] + $_POST['consentium_bonus'];
-			$update_coin_sql = "update bbn_user set coin_number='".$coin_number."' where email='"
+			$token_number = $user['token_number'] + $_POST['token_amount'] + $_POST['token_bonus'];
+			$update_token_sql = "update users set token_number='".$token_number."' where email='"
 			.$_POST['user_email']."'";
-			sendMail($_POST['user_email'], getSuccessTransactionTitle(), getSuccessTransactionMessage($user['last_name'], $user['erc20_address']));
-			mysqli_query($dbc, $update_coin_sql);
+			sendMail($_POST['user_email'], getSuccessTransactionTitle(), getSuccessTransactionMessage($user['last_name'], $user['wallet_address']));
+			mysqli_query($dbc, $update_token_sql);
 		}
 	}
-	$sql = "select * from bbn_transaction where transaction_id='".$_POST['transaction_id']."'";
+	$sql = "select * from transactions where transaction_id='".$_POST['transaction_id']."'";
 	$result = mysqli_query($dbc, $sql);
 	$transaction = mysqli_fetch_array($result);
 ?>
@@ -71,16 +71,16 @@
 		<input type="text" name="address" value="<?php echo $transaction['address'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
-		Consentium amount:<br/>
-		<input type="text" name="consentium_amount" value="<?php echo $transaction['consentium_amount'] ?>" readonly>
+		Token amount:<br/>
+		<input type="text" name="token_amount" value="<?php echo $transaction['token_amount'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
-		Consentium rate:<br/>
+		Conversion rate:<br/>
 		<input type="text" name="conversion_rate" value="<?php echo $transaction['conversion_rate'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
-		Consentium bonus:<br/>
-		<input type="text" name="consentium_bonus" value="<?php echo $transaction['consentium_bonus'] ?>" readonly>
+		Token bonus:<br/>
+		<input type="text" name="token_bonus" value="<?php echo $transaction['token_bonus'] ?>" readonly>
 	</div>
 	<div class="inline width-30">
 		Status:<br/>

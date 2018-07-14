@@ -25,7 +25,7 @@
 <body>
 	<div class="center">
 		<h1>Login panel</h1>
-		<label id="error" style="color: red;"><?php if($err) echo $err;?></label>
+		<label id="error" style="color: red;"><?php if(isset($err)) echo $err;?></label>
 		<form action="admin.php" method="POST">
 			<div id="admin" class="center">
 				<input type="text" name="user" placeholder="User name"><br/><br/>

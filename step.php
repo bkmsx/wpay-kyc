@@ -11,14 +11,14 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 	setcookie("date_of_birth", $_POST['date_of_birth'], time() + 86400 * 365);
 	setcookie("citizenship", $_POST['citizenship'], time() + 86400 * 365);
 	setcookie("country", $_POST['country'], time() + 86400 * 365);
-	setcookie("erc20_address", $_POST['erc20_address'], time() + 86400 * 365);
+	setcookie("wallet_address", $_POST['wallet_address'], time() + 86400 * 365);
 
 	require_once('mysqli_connect.php');
-	// check if erc20 address exists
-	$sql_check_erc20address = "select * from bbn_user where erc20_address = '".$_POST['erc20_address']."'";
-	$result_erc20address = mysqli_query($dbc, $sql_check_erc20address);
-	if (mysqli_num_rows($result_erc20address) > 0) {
-		$err = "This Erc20 Wallet Address was registered in our system. Please use another Erc20 Wallet Address!";
+	// check if wallet address exists
+	$sql_check_walletaddress = "select * from users where wallet_address = '".$_POST['wallet_address']."'";
+	$result_walletaddress = mysqli_query($dbc, $sql_check_walletaddress);
+	if (mysqli_num_rows($result_walletaddress) > 0) {
+		$err = "This Wallet Address was registered in our system. Please use another Wallet Address!";
 		setcookie('error', 'address', time() + 86400 * 1);
 		include 'error_page.php';
 		exit;
@@ -31,7 +31,7 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 	sendMail($_COOKIE['email'], getApplyKycTitle(), getApplyKycMessage($_POST['lname']));
 
 	// check Artemis
-	$sql_max_id = "select * from bbn_user where email='".$_COOKIE['email']."'";
+	$sql_max_id = "select * from users where email='".$_COOKIE['email']."'";
 	$result = mysqli_query($dbc, $sql_max_id);
 	$user = mysqli_fetch_array($result);
 
@@ -67,22 +67,22 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 		}	
 	}
 	if ($status == "CLEARED") {
-		sendMail($_COOKIE['email'], getSuccessKycTitle(), getSuccessKycMessage($_POST['lname'], $_POST['erc20_address']));
+		sendMail($_COOKIE['email'], getSuccessKycTitle(), getSuccessKycMessage($_POST['lname'], $_POST['wallet_address']));
 	}
 
 	// Update Google sheet
 	require_once('update-sheet.php');
-	updateSheet([$_COOKIE['email'], $fname." ".$lname, $date_of_birth, $_POST['citizenship'], $_POST['country'], date('d/m/Y h:i:s', time()), $status, $_POST['erc20_address']], $user['row_number']);
+	updateSheet([$_COOKIE['email'], $fname." ".$lname, $date_of_birth, $_POST['citizenship'], $_POST['country'], date('d/m/Y h:i:s', time()), $status, $_POST['wallet_address']], $user['row_number']);
 
 	// Update database
-	$sql = "update bbn_user set first_name='"
+	$sql = "update users set first_name='"
 	.$_POST['fname']."', last_name='"
 	.$_POST['lname']."', date_birth='"
 	.$_POST['date_of_birth']."', citizenship='"
 	.$_POST['citizenship']."',country='"
 	.$_POST['country']."', date=now(), status='"
-	.$status."', erc20_address='"
-	.$_POST['erc20_address'];
+	.$status."', wallet_address='"
+	.$_POST['wallet_address'];
 	
 	if(isset($_FILES['file']) && !empty($name) && !empty($tmp_name)) {
 		$sql = $sql."', passport_location='".$location;
@@ -90,7 +90,7 @@ if(isset($_FILES['file']) || !empty($_POST['fname']) || !empty($_POST['lname']) 
 
 	$sql = $sql."' where email='".$_COOKIE['email']."'";
 	if(mysqli_query($dbc, $sql)){
-		setcookie("erc20_address", $_POST['erc20_address'], time() + 86400 * 365);
+		setcookie("wallet_address", $_POST['wallet_address'], time() + 86400 * 365);
 		setcookie("last_name", $_POST['lname'], time() + 86400 * 365);
 		setcookie("error", "", time() + 86400 * 365);
 		setcookie("kyc_done", 'true', time() + 86400 * 365);	
@@ -171,9 +171,9 @@ while ($nation = mysqli_fetch_array($result)) {
     if (dateBirth) {
       $('#date').val(dateBirth.replace(/%2F/g, "/"));
     }
-    var erc20Address = getCookie('erc20_address');
-    if (erc20Address) {
-      $('#erc20_address').val(erc20Address);
+    var walletAddress = getCookie('wallet_address');
+    if (walletAddress) {
+      $('#wallet_address').val(walletAddress);
     }
     handleInput();
   });
@@ -193,7 +193,7 @@ function handleClickCheckbox() {
 function handleInput() {
     var firstName = $('#fname').val();
     var lastName = $('#lname').val();
-    var erc20Address = $('#erc20_address').val();
+    var walletAddress = $('#wallet_address').val();
     var date = $('#date').val();
     var regexName = /^[A-Za-z ]+$/;
     var nameIsOk = regexName.test(firstName) && regexName.test(lastName);
@@ -203,13 +203,13 @@ function handleInput() {
       $('#errorName').html('');
     }  
     var regexAddr = /^0x[a-fA-F0-9]{40}$/;
-    var addressIsOk = regexAddr.test(erc20Address);
-    if (erc20Address && !addressIsOk) {
+    var addressIsOk = regexAddr.test(walletAddress);
+    if (walletAddress && !addressIsOk) {
       $('#errorAddr').html('* Address is not Ethereum address');
     } else {
       $('#errorAddr').html('');
     }
-    if (firstName == '' || lastName == '' || erc20Address == '' || date == '' || !nameIsOk || !addressIsOk) {
+    if (firstName == '' || lastName == '' || walletAddress == '' || date == '' || !nameIsOk || !addressIsOk) {
         $('#nextBtn2').attr('disabled', 'disabled');
     } else {
         $('#nextBtn2').removeAttr('disabled');
@@ -354,8 +354,8 @@ function changeFile(){
       </select>
     </div>
     <div class="col-md-6 v-pad">
-        <label>ERC20 Wallet Address</label>
-      <input id="erc20_address" name="erc20_address" class="input-style" type='text'  placeholder="" value=""  oninput="handleInput()"/>
+        <label>Stellar Wallet Address</label>
+      <input id="wallet_address" name="wallet_address" class="input-style" type='text'  placeholder="" value=""  oninput="handleInput()"/>
     </div>
     <div class="col-md-6 v-pad">
         <label>Country Of Residency</label>

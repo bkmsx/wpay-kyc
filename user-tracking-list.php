@@ -5,7 +5,7 @@
 	}
 	require_once('mysqli_connect.php');
 	$id=$_GET['id'];
-	$sqls = "select * from bbn_user where user_id = '$id'";
+	$sqls = "select * from users where user_id = '$id'";
 	$results = mysqli_query($dbc, $sqls);
 	$users = mysqli_fetch_array($results);
 	$email = $users['email'];
